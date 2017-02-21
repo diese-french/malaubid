@@ -19,16 +19,16 @@ gems: ['jekyll-lunr-js-search']
     
 mini_magick:
     thumbnail:
-        source: images/_original
+        source: _images
         destination: images/thumbnail
         resize: "400x400"
     medium:
-        source: images/_original
+        source: _images
         destination: images/medium
-        resize: "1200x1200"
+        resize: "800x800"
     large:
-        source: images/_original
+        source: _images
         destination: images/large
-        resize: "2000x2000"
+        resize: "1500x1500"
 
 exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md']
