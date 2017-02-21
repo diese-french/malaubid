@@ -1,9 +1,12 @@
----
+Ôªø---
 
 layout: recipe
 
 title:  "Moelleux coulant au chocolat"
+category: dessert
+
 author: libussa
+
 image: moelleux-chocolat.jpg
 
 prepTime: 10 minutes
@@ -13,7 +16,7 @@ totalTime: 20 minutes
 yield: 2 moelleux
 
 ingredients:
-- 1 úuf 
+- 1 oeuf 
 - 25 g de sucre en poudre 
 - 15 g de farine 
 - 50 g de beurre 
@@ -21,15 +24,15 @@ ingredients:
 - 1 noisette de beurre pour les ramequins 
 
 directions:
-- PrÈchauffez le four ‡ 200 oc (th. 6-7).
-- Battre, l'úuf entier avec le sucre jusqu'‡ ce que la prÈparation blanchisse. 
-- Ajoutez la farine. MÈlangez ‡ nouveau. 
+- Pr√©chauffez le four √† 200 oc (th. 6-7).
+- Battre, l'oeuf entier avec le sucre jusqu'√† ce que la pr√©paration blanchisse. 
+- Ajoutez la farine. M√©langez √† nouveau. 
 - Faire fondre le beurre avec le chocolat (micro-onde ou bain-marie). 
-- MÈlangez les 2 prÈparations.
-- RÈpartissez la p‚te dans les ramequins beurrÈs. 
-- Mettez au four 10 ‡ 12 min environ. 
-- DÈmoulez dÈlicatement ‡ la sortie du four. 
+- M√©langez les 2 pr√©parations.
+- R√©partissez la p√¢te dans les ramequins beurr√©s. 
+- Mettez au four 10 √† 12 min environ. 
+- D√©moulez d√©licatement √† la sortie du four. 
 
 ---
 
-Une tuerie. Ajustez la cuisson en fonction du four, doublez les quantitÈs pour des moules ‡ muffin.
+Une tuerie. Ajustez la cuisson en fonction du four, doublez les quantit√©s pour des moules √† muffin.
