@@ -1189,7 +1189,7 @@ input[type=range] {
 .white { color: #fff }
 
 .aqua  { color: #7fdbff }
-.olive  { color: #007FFF }
+.blue  { color: #007FFF }
 .navy  { color: #001f3f }
 .teal  { color: #39cccc }
 .green { color: #2ecc40 }
@@ -1209,7 +1209,7 @@ input[type=range] {
 .bg-white  { background-color: #fff }
 
 .bg-aqua  { background-color: #7fdbff }
-.bg-olive  { background-color: #007FFF }
+.bg-blue  { background-color: #007FFF }
 .bg-navy  { background-color: #001f3f }
 .bg-teal  { background-color: #39cccc }
 .bg-green { background-color: #2ecc40 }
@@ -1229,7 +1229,7 @@ input[type=range] {
 .bg-darken-4 { background-color: rgba(0,0,0,.5) }
 
 .border-aqua  { border-color: #7fdbff }
-.border-olive  { border-color: #007FFF }
+.border-blue  { border-color: #007FFF }
 .border-navy  { border-color: #001f3f }
 .border-teal  { border-color: #39cccc }
 .border-green { border-color: #2ecc40 }
