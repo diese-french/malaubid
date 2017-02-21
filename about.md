@@ -4,4 +4,4 @@ title: About
 permalink: /about/
 ---
 
-Chowdown, a plain text recipe database for hackers
+Malaubid, un site de recettes.
