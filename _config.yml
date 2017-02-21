@@ -1,10 +1,10 @@
 # Site settings
-title: Chowdown
+title: Malaubid
 email: your-email@domain.com
 description: The plain text recipe database for hackers
-baseurl: "http://chowdown.io"
-twitter_username: clarklab
-github_username:  clarklab
+baseurl: "http://malau.bid"
+twitter_username: libussa
+github_username:  libussa
 
 # Build settings
 markdown: kramdown
