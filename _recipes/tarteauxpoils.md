@@ -2,7 +2,7 @@
 
 layout: recipe
 title:  "Tarte aux poils"
-image: http://pegleg.p.e.pic.centerblog.net/t60qthk4.jpg
+image: tarte-aux-poils.jpg
 
 ingredients:
 - Une tarte
