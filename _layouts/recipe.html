@@ -56,9 +56,9 @@ layout: default
     
     <div class="sm-col sm-col-6 lg-col-6">
       <h4 class="blue mt0 mb2 xs-center">Préparation</h4>
-      <ul itemprop="recipeInstructions">
+      <ul>
         {% for direction in page.directions %}
-        <li>{{ direction | markdownify }}</li>
+        <li itemprop="recipeInstructions">{{ direction | markdownify }}</li>
         {% endfor %}
       </ul>
     </div>
@@ -101,9 +101,9 @@ layout: default
       </ul>
       
       <h4 class="blue regular xs-center">Préparation</h4>
-        <ul itemprop="instructions">
+        <ul>
         {% for item in recipe.directions %}
-        <li>{{ item | markdownify }}</li>
+        <li itemprop="recipeInstructions">{{ item | markdownify }}</li>
         {% endfor %}
       </ul>
           
