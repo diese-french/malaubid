@@ -2,7 +2,9 @@
 title: Malaubid
 email: your-email@domain.com
 description: The plain text recipe database for hackers
-baseurl: "https://malau.bid"
+# use this if you're using a /folder
+baseurl: ""
+url: "https://malau.bid"
 twitter_username: libussa
 github_username:  libussa
 

@@ -36,7 +36,7 @@ layout: default
     <div class="sm-col sm-col-6 lg-col-6">
       <!-- check if it's a component-based recipe -->
       {% if page.components %}
-      <h4 class="blue mt0 mb2 xs-center">Etapes</h4>
+      <h4 class="olive mt0 mb2 xs-center">Etapes</h4>
       <ul>
         <!-- list components that make up recipe -->
         {% for component in page.components %}
@@ -44,7 +44,7 @@ layout: default
         {% endfor %}
       </ul>
       {% else %}
-      <h4 class="blue mt0 mb2 xs-center">Ingrédients</h4>
+      <h4 class="olive mt0 mb2 xs-center">Ingrédients</h4>
       <ul>
         <!-- list ingredients that make up recipe -->
         {% for ingredient in page.ingredients %}
@@ -55,7 +55,7 @@ layout: default
     </div>
     
     <div class="sm-col sm-col-6 lg-col-6">
-      <h4 class="blue mt0 mb2 xs-center">Préparation</h4>
+      <h4 class="olive mt0 mb2 xs-center">Préparation</h4>
       <ul>
         {% for direction in page.directions %}
         <li itemprop="recipeInstructions">{{ direction | markdownify }}</li>
@@ -70,7 +70,7 @@ layout: default
   {% if page.components %}
   
   <div class="components bg-darken-2 p2 mt3 mb3 center">
-    &darr; This is a <strong class="blue">component-based recipe</strong> (fancy talk for making the dish in pieces, then assembling). &darr;
+    &darr; This is a <strong class="olive">component-based recipe</strong> (fancy talk for making the dish in pieces, then assembling). &darr;
   </div>
   
   <div class="clearfix mxn2">
@@ -78,7 +78,7 @@ layout: default
     <div class="sm-col sm-col-4 px2">
     {% for recipe in site.components %}
     {% if recipe.title == component %}
-      <h4 class="blue center">{{recipe.title}}</h4>
+      <h4 class="olive center">{{recipe.title}}</h4>
       
       {% for image in recipe.image %}
       <div class="image ratio bg-cover" style="background-image:url({{site.baseurl}}/images/medium/{{ image }});">
@@ -93,14 +93,14 @@ layout: default
         {% endif %}
       {% endfor %}
       
-      <h4 class="blue regular xs-center">Ingrédients</h4>
+      <h4 class="olive regular xs-center">Ingrédients</h4>
         <ul class="ingredients"">
         {% for item in recipe.ingredients %}
         <li itemprop="recipeIngredient">{{ item | markdownify }}</li>
         {% endfor %}
       </ul>
       
-      <h4 class="blue regular xs-center">Préparation</h4>
+      <h4 class="olive regular xs-center">Préparation</h4>
         <ul>
         {% for item in recipe.directions %}
         <li itemprop="recipeInstructions">{{ item | markdownify }}</li>
