@@ -4,6 +4,7 @@ layout: default
 <div class="container" itemscope itemtype="https://schema.org/Recipe">
   
 <!-- call up the image and image credit link -->
+{% if page.image %}
   {% for image in page.image %}
   <div class="xs-p2">
     <img itemprop="image" src="{{site.baseurl}}/images/large/{{ image }}" />
@@ -16,6 +17,7 @@ layout: default
     {% endif %}
   </div>
   {% endfor %}
+ {% endif %}
 
 <article class="post-content px2">
 
@@ -25,9 +27,9 @@ layout: default
   </header>
 
   <div class="px2 mt3 clearfix">
-    <div class="sm-col-8 center mx-auto" itemprop="description">{{page.}}</div>
+    <div class="sm-col-8 center mx-auto" itemprop="description">{{page.content}}</div>
   </div>
-  content
+
 <!-- call up recipe and directions -->
   <div class="clearfix mt3">
   
@@ -46,7 +48,7 @@ layout: default
       <ul">
         <!-- list ingredients that make up recipe -->
         {% for ingredient in page.ingredients %}
-        <li itemprop="recipeIngredient>{{ ingredient | markdownify }}</li>
+        <li itemprop="recipeIngredient" >{{ ingredient | markdownify }}</li>
         {% endfor %}
       </ul>
       {% endif %}
