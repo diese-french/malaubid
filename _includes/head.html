@@ -24,6 +24,6 @@
   {% if page.title %}<meta name="twitter:title" content="{{ page.title }}">{% else %}<meta name="twitter:title" content="Malaubid">{% endif %}
   {% if page.url %}<meta name="twitter:url" content="{{ site.baseurl }}{{ page.url }}">{% endif %}
   {% if page.directions %}<meta name="twitter:description" content="{{ page.content | strip_html }}">{% else %}<meta name="twitter:description" content="Malaubid">{% endif %}
-  {% if page.image %}<meta name="twitter:image:src" content="{{site.baseurl}}/images/medium/{{ page.image }}">{% else %}<meta name="twitter:image:src" content="{{site.baseurl}}/images/thumbnails/crockpot-buffalo-chicken.jpg">{% endif %}
+  {% if page.image %}<meta name="twitter:image" content="{{site.baseurl}}/images/thumbnail/{{ page.image }}">{% else %}<meta name="twitter:image" content="{{site.baseurl}}/favicon.png">{% endif %}
 
 </head>
