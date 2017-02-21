@@ -45,10 +45,10 @@ layout: default
       </ul>
       {% else %}
       <h4 class="blue mt0 mb2 xs-center">Ingrédients</h4>
-      <ul">
+      <ul>
         <!-- list ingredients that make up recipe -->
         {% for ingredient in page.ingredients %}
-        <li itemprop="recipeIngredient" >{{ ingredient | markdownify }}</li>
+        <li itemprop="recipeIngredient">{{ ingredient | markdownify }}</li>
         {% endfor %}
       </ul>
       {% endif %}
