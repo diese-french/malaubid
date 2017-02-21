@@ -1,4 +1,4 @@
-﻿---
+---
 
 layout: recipe
 title:  "Red Berry Tart"

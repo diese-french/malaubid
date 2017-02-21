@@ -1,4 +1,4 @@
-﻿---
+---
 
 layout: recipe
 title:  "Tarte aux poils"
