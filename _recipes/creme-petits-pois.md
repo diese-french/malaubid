@@ -7,7 +7,7 @@ category: entrée
 
 author: libussa
 
-image: creme-petit-pois.jpg
+image: creme-petits-pois.jpg
 
 prepTime: 15 minutes
 cookTime: 40 minutes
