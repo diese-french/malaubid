@@ -21,15 +21,15 @@ gems: ['jekyll-lunr-js-search']
     
 mini_magick:
     thumbnail:
-        source: _images
+        source: _recipes
         destination: images/thumbnail
         resize: "400x400"
     medium:
-        source: _images
+        source: _recipes
         destination: images/medium
         resize: "800x800"
     large:
-        source: _images
+        source: _recipes
         destination: images/large
         resize: "1500x1500"
 
