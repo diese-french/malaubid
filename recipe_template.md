@@ -8,6 +8,7 @@ category: dessert
 author: libussa
 
 image: tarte-poils.jpg
+imagecredit: https://example.com
 
 prepTime: 10 minutes
 cookTime: 10 minutes
