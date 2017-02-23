@@ -33,4 +33,4 @@ mini_magick:
         destination: images/large
         resize: "1500x1500"
 
-exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md']
+exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md', 'recipe_template.md']
