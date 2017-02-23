@@ -1,4 +1,4 @@
-# Malaubid
+# [Malaubid](https://malau.bid)
 
 Un site de recettes.
 
