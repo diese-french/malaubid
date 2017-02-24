@@ -41,7 +41,7 @@ directions:
 - Découper les aubergines en 2 dans le sens de la longueur
 - Cisailler en petits carrés jusqu'à la peau
 - Eplucher les pommes de terres et couper en rondelles
-- Etaler els rondelles dans le plat à gratin et placer les demi aubergines par-dessus, peau en dessous
+- Etaler les rondelles dans le plat à gratin et placer les demi aubergines par-dessus, peau en dessous
 - Saler et arroser d'huile d'olive
 - Passer au four 30 minutes à 180°C
 - Faire revenir la viande à feu vif, saler et poivrer
