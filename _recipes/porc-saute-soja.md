@@ -33,4 +33,4 @@ directions:
 
 ---
 
-Recette pas cher et pas compliquée avec un semblant d'exotisme, et le croquant sympa des pousses de haricot.
+Recette pas chère et pas compliquée avec un semblant d'exotisme, et le croquant sympa des pousses de haricot.
