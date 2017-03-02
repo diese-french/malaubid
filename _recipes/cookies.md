@@ -30,9 +30,9 @@ directions:
 - Tamiser la farine et la levure et mélanger petit à petit, on doit obtenir un mélange sablé
 - Ajouter les morceaux de beurre mou et travailler pour obtenir une pâte homogène
 - Ajouter le chocolat et travailler juste ce qu’il faut pour homogénéiser
-- Sur une plaque, former des peites tas de pâtes (30 g) bien espacés
-- Légérement aplatir, mais pas trop, ça s’étale à la cuisson
-- Solution alternative : former un boudin de pâte, rouler dans du papier sulfirisé et placer au freezer le temps de préchauffer le four. On aura juste à couper des morceaux.
+- Sur une plaque, former des petits tas de pâte (30 g) bien espacés
+- Légèrement aplatir, mais pas trop, ça s’étale à la cuisson
+- "Solution alternative : former un boudin de pâte, rouler dans du papier sulfurisé et placer au freezer le temps de préchauffer le four. On aura juste à couper des morceaux."
 - Cuire 10 minutes à 180°C. Les bords des cookies doivent commencer à craqueler. Cuire selon le goût, penser qu’ils continuent à cuire une fois sortis du four.
 
 
