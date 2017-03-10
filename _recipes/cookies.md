@@ -19,6 +19,7 @@ ingredients:
 - 150 g de chocolat
 - 200 g de sucre roux
 - 200 g de farine
+- 1 oeuf
 - 100 g de beurre mou
 - 1/2 sachet de levure chimique
 - 1/2 cc d’extrait de vanille
