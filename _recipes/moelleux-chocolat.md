@@ -16,22 +16,22 @@ totalTime: 20 minutes
 yield: 2 moelleux
 
 ingredients:
-- 1 oeuf 
-- 25 g de sucre en poudre 
-- 15 g de farine 
-- 50 g de beurre 
-- 50 g de chocolat noir 
-- 1 noisette de beurre pour les ramequins 
+- 1 œuf 
+- 25 g de sucre en poudre
+- 15 g de farine
+- 50 g de beurre
+- 50 g de chocolat noir
+- 1 noisette de beurre pour les ramequins
 
 directions:
 - Préchauffez le four à 200 oc (th. 6-7).
-- Battre, l'oeuf entier avec le sucre jusqu'à ce que la préparation blanchisse. 
-- Ajoutez la farine. Mélangez à nouveau. 
-- Faire fondre le beurre avec le chocolat (micro-onde ou bain-marie). 
+- Battre, l’œuf entier avec le sucre jusqu'à ce que la préparation blanchisse.
+- Ajoutez la farine. Mélangez à nouveau.
+- Faire fondre le beurre avec le chocolat (micro-onde ou bain-marie).
 - Mélangez les 2 préparations.
-- Répartissez la pâte dans les ramequins beurrés. 
-- Mettez au four 10 à 12 min environ. 
-- Démoulez délicatement à la sortie du four. 
+- Répartissez la pâte dans les ramequins beurrés.
+- Mettez au four 10 à 12 min environ.
+- Démoulez délicatement à la sortie du four.
 
 ---
 

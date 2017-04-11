@@ -19,7 +19,7 @@ ingredients:
 - 150 g de chocolat
 - 200 g de sucre roux
 - 200 g de farine
-- 1 oeuf
+- 1 œuf
 - 100 g de beurre mou
 - 1/2 sachet de levure chimique
 - 1/2 cc d’extrait de vanille
@@ -42,4 +42,3 @@ directions:
 Pour 25 cookies.
 
 Tout est dans la cuisson. Attention les cookies sèchent rapidement, il vaut mieux qu’ils soient moins cuits. On peut remplacer l’extrait de vanille par un ristretto bien serré, ou ne rien mettre. On peut aussi ajouter des noix (pécan…etc)
-

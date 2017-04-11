@@ -22,7 +22,7 @@ ingredients:
 - 150 g de beurre
 - 150 g de sucre
 - 1 [pâte brisée](../recipes/pate-brisee.html)
-- Crème fraiche entière (Isigny ou crème de ferme) (facultatif)
+- Crème fraîche entière (Isigny ou crème de ferme) (facultatif)
 
 
 directions:
@@ -34,14 +34,14 @@ directions:
 - Hors du feu, disposer les demi pommes à la verticale dans le moule
 - Bien serrer les pommes, ajouter des morceaux pour caler le tout (ça va réduire)
 - Remettre sur feu moyen 10 - 15 minutes, les pommes vont pocher dans le caramel
-- Etaler la pâte brisée (laisser la à température ambiante si elle est trop dure)
+- Étaler la pâte brisée (laisser la à température ambiante si elle est trop dure)
 - Hors du feu, placer la pâte sur les pommes
 - Bien rentrer les bords de la pâte sur les côtés, la croûte est très bonne
 - Presser légèrement sur la pâte pour faire adhérer aux pommes
 - Faire un petit trou au centre avec un couteau pour l'évacuation de la vapeur
 - Cuire à four chaud (180 - 200°C) jusqu'à cuisson complète de la pâte. La pâte doit être colorée et le caramel remonter sur les bords (ça peut déborder...). Compter environ 30 minutes.
 - Sortir du four et laisser reposer 5 minutes
-- Moment délicat : placer un plat avec des bords (pour le jus) sur le moule, et retourner d'un coup
+- "Moment délicat : placer un plat avec des bords (pour le jus) sur le moule, et retourner d'un coup"
 - Retirer le moule, servir chaud avec une cuillère de crème fraîche sur la part
 
 

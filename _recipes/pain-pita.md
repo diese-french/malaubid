@@ -30,10 +30,10 @@ directions:
 - Lorsque votre pâte est montée, y ajouter les graines de sésame noires et la coriandre hachée finement et re-pétrir légèrement
 - Former 8 petites boules et laisser reposer 15 minutes
 - Préchauffer le four à 270°C avec un plaque
-- Au rouleau, étaler les boules de pâte sur une épaisseur d’environ 5 mm et les poser directementsur la plaque de cuisson chaude
+- Au rouleau, étaler les boules de pâte sur une épaisseur d’environ 5 mm et les poser directement sur la plaque de cuisson chaude
 - Enfourner, retourner au bout de 2 minutes et laisser cuire encore 2 minutes.
 
 
 ---
 
-Bien pour l'apéro, ça va très bien avec [l'homous de potimarron](../recipes/houmous-potimarron.html)
+Bien pour l'apéro, ça va très bien avec [l'houmous de potimarron](../recipes/houmous-potimarron.html)

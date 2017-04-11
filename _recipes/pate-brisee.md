@@ -20,7 +20,7 @@ ingredients:
 - 250 g de farine
 - 125 g de beurre
 - 1 pincée de sel si beurre doux
-- 1 jaune d'oeuf
+- 1 jaune d’œuf
 - 50 ml d'eau
 
 
@@ -28,7 +28,7 @@ directions:
 - Faire une fontaine avec la farine sur le plan de travail
 - Ajouter le beurre ramolli en petits morceaux
 - Sabler du bout des doigts sans trop travailler
-- Refaire une fontaine, ajouter le jaune d'oeuf
+- Refaire une fontaine, ajouter le jaune d’œuf
 - Malaxer du bout des doigts depuis le centre, en ajoutant l'eau petit à petit
 - Incorporer toute la farine jusqu'à l'obtention d'une boule
 - Fraiser la pâte pour l'homogénéiser, sans trop la travailler
