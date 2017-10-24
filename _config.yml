@@ -1,7 +1,7 @@
 # Site settings
 title: Malaubid
 email: your-email@domain.com
-description: The plain text recipe database for hackers
+description: Un site de recettes qui utilise jekyll et markdown
 # use this if you're using a /folder
 baseurl: ""
 url: "https://malau.bid"
@@ -23,7 +23,7 @@ lunr_search:
      excludes: [rss.xml, atom.xml]
      min_length: 3
      stopwords: "stopwords.txt"
-    
+
 mini_magick:
     thumbnail:
         source: _recipes
