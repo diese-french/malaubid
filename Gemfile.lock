@@ -19,7 +19,7 @@ GEM
       safe_yaml (~> 1.0)
     jekyll-lunr-js-search (3.3.0)
       json (~> 2.0)
-      nokogiri (~> 1.7)
+      nokogiri (~> 1.8.1)
       therubyracer (~> 0.12)
     jekyll-minimagick (0.0.4)
       jekyll (>= 0.10.0)
