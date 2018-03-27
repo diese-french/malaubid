@@ -37,9 +37,9 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     mercenary (0.3.6)
     mini_magick (4.6.1)
-    mini_portile2 (2.1.0)
-    nokogiri (1.8.1)
-      mini_portile2 (~> 2.1.0)
+    mini_portile2 (2.3.0)
+    nokogiri (1.8.2)
+      mini_portile2 (~> 2.3.0)
     pathutil (0.14.0)
       forwardable-extended (~> 2.6)
     public_suffix (2.0.5)
@@ -63,4 +63,4 @@ DEPENDENCIES
   jekyll-minimagick
 
 BUNDLED WITH
-   1.11.2
+   1.15.1
