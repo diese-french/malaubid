@@ -13,7 +13,7 @@ totalTime: 15 minutes
 
 
 ingredients:
-- 400 g de chocolat, noir ou au lait suivant le goût
+- 200 g de chocolat au lait
 
 directions:
 - Faire fondre le chocolat doucement, idéalement au bain marie. Si on utilise le micro onde, faire chauffer quelques secondes, mélanger, et recommencer. Un chocolat trop chaud ne solidifiera pas correctement.
