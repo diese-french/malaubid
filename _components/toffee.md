@@ -22,7 +22,7 @@ directions:
 - Mettre tous les ingrédients dans une casserole à feu doux
 - Une fois que tout est mélangé et fondu, augmenter le feu et porter à ébullition
 - Remuer sans cesse, le caramel va commencer à dorer en 10-15 minutes
-- Surveiller la couleur et arrêter la cuisson selon le goût (environ 20 minutes)
+- Surveiller la couleur et arrêter la cuisson selon le goût (environ 20 minutes en tout)
 
 ---
 
