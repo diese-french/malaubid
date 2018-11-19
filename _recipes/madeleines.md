@@ -7,7 +7,7 @@ category: dessert
 
 author: ennael
 
-image: madeleiners.jpg
+image: madeleines.jpg
 
 prepTime: 1h15 minutes
 cookTime: 8 minutes
@@ -18,8 +18,8 @@ yield: 50 madeleines
 ingredients:
 - 500g de farine
 - 1 sachet de levure
-- 400 g de sucre
-- 250 g de beurre
+- 400g de sucre
+- 250g de beurre
 - 4 oeufs entiers
 - 180g de lait
 - 1 parfum (vanille, citron...)
@@ -30,7 +30,7 @@ directions:
 - Laisser reposer la pâte pendant 1h à température ambiante
 - Beurrer et fariner les moules à madeleine
 - Remplir chacun des moules aux 3/4
-- Enfourner à four très chaud préchauffé, 250°, pendant 7 à 8 minutes
+- Enfourner à four très chaud préchauffé, 250°C, pendant 7 à 8 minutes
 
 ---
 
