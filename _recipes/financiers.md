@@ -13,7 +13,7 @@ prepTime: 20 minutes
 cookTime: 20 minutes
 totalTime: 40 minutes
 
-yield: 24 financiers
+yield: 25 financiers
 
 ingredients:
 - 8 blancs d’œufs
@@ -27,7 +27,7 @@ directions:
 - Mélanger intimement les blancs d’œufs
 - Faire un [beurre noisette](https://fr.wikipedia.org/wiki/Beurre_noisette) et l'ajouter au reste
 - Bien beurrer les moules et les remplir au 3/4
-- Mettre au four à 180°C et laisser cuire 18-20 minutes
+- Mettre au four à 200°C et laisser cuire 12-15 minutes, suivant la taille des moules
 - Surveiller la couleur en fin de cuisson, démouler et laisser refroidir sur une grille
 
 
