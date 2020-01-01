@@ -7,7 +7,7 @@ category: entrée
 
 author: ennael
 
-image: falafels.png
+image: falafels.jpg
 
 prepTime: 20 minutes
 cookTime: 15 minutes
