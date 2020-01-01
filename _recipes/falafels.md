@@ -25,7 +25,7 @@ directions:
 - Servir bien chaud
 
 components:
-- Fallafels
+- Falafels
 - Sauce au yaourt
 
 ---
