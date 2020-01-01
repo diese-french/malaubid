@@ -13,12 +13,12 @@ totalTime: 10 minutes
 
 
 ingredients:
-_ 225g de yaourt grec
-_ 1 gousse d'ail
-_ 1 cuillère à café de cumin
-_ quelques feuilles de persil frais
-_ 1 cuillère à café de poivre blanc
-_ 1/2 citron
+- 225g de yaourt grec
+- 1 gousse d'ail
+- 1 cuillère à café de cumin
+- quelques feuilles de persil frais
+- 1 cuillère à café de poivre blanc
+- 1/2 citron
 
 directions:
 - Verser le yaourt dans un bol et ajouter le citron.
