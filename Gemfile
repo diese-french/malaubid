@@ -1,5 +1,5 @@
 # A sample Gemfile
 source "https://rubygems.org"
 gem "jekyll-lunr-js-search"
-gem "jekyll-minimagick"
 gem "jekyll"
+gem "jekyll-minimagick", github: "benubois/jekyll-minimagick", branch: "patch-1"
