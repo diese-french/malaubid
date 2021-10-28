@@ -25,9 +25,9 @@ ingredients:
 - 170 g de beurre doux
 
 directions:
-- Dans le bol du robot pétrisseur, mélanger lait, sucre, sel, œufs battus.
+- Dans le bol du robot pétrisseur, mélanger lait, sucre, sel, œufs battus et levure.
 - Ajouter la farine et fraser rapidement.
-- Pétrir au crochet 10 minutes pas trop vite.
+- Pétrir au crochet 10 minutes pas trop vite (vitesse 2 sur un robot patissier classique).
 - Ajouter le beurre en petits morceaux.
 - Pétrir 5 minutes, le beurre doit être incorporé.
 - Former une boule de pâte, replacer dans le bol.
