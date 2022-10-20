@@ -52,16 +52,14 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
-    libv8 (3.16.14.19)
+    libv8 (3.16.14.19-x86_64-linux)
     liquid (4.0.3)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
     mini_magick (4.11.0)
-    mini_portile2 (2.8.0)
-    nokogiri (1.13.9)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
@@ -85,7 +83,7 @@ GEM
     webrick (1.7.0)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   jekyll
@@ -93,4 +91,4 @@ DEPENDENCIES
   jekyll-minimagick!
 
 BUNDLED WITH
-   2.1.4
+   2.2.33
