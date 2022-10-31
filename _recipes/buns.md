@@ -17,7 +17,7 @@ yield: 8 buns
 
 ingredients:
 - 360 g de lait
-- 60 gr de beurre fondu
+- 60 gr de beurre
 - 25 gr de sucre
 - 25 gr de levure fraîche
 - 1 œuf battu
@@ -27,12 +27,13 @@ ingredients:
 - Sésame et/ou pavot pour le dessus
 
 directions:
-- Mélanger lait tiède, sucre, œuf battu, beurre fondu et levure émiettée dans le bol du pétrisseur.
+- Mélanger lait tiède, sucre, œuf battu, et levure émiettée dans le bol du pétrisseur.
 - Bien mélanger au fouet.
 - Mélanger farine et sel dans le bol.
 - Démarrer le pétrissage à petite vitesse au crochet.
 - Une fois la farine disparue, augmenter la vitesse.
 - Augmenter la vitesse au bout de 5 minutes, et recommencer.
+- Ajouter le beurre en petits morceaux.
 - Quand la pâte se décolle des bords et fond du bol, on peut arrêter. Prévoir entre 10 et 20 minutes de pétrissage au total.
 - Fariner un plan de travail, poser la boule dessus et pétrir rapidement (méthode Berthinet, 2 minutes, ça va coller).
 - Remettre la pâte dans le bol qu'on aura huilé (important).
