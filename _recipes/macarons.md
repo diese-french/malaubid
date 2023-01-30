@@ -16,15 +16,12 @@ yield: 75 macarons
 
 
 ingredients:
-Mélange de base
-- 600g amande en poudre
-- 600g sucre glace
-- 220g de blancs d'oeufs
-Meringue
-- 220g de blancs
-- 600g de sucre
+- 600g amande en poudre (base)
+- 600g sucre glace (base)
+- 220g de blancs d'oeufs (base) 
+- 220g de blancs (meringue)
+- 600g de sucre (meringue)
 - parfum (vanille, chocolat)
-Crème
 - 180g de crème liquide
 - 165g de chocolat blanc
 - 20g de beurre pour la crème chocolat
