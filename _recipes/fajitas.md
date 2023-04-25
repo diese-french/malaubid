@@ -29,7 +29,7 @@ directions:
 - Prolonger le pétrissage pendant 6 minutes (force 2)
 - Former des boules bien tendues d'environ 100g
 - Laisser reposer 5 minutes
-- Etaler chaque boule de manière très fine (1 mm environ) : abaisser la boule étaler au rouleau à pâtisserie, tourner d'1/8, étaler à nouveau au rouleau... jusqu'à faire le tour complet. 
+- "Etaler chaque boule de manière très fine (1 mm environ) : abaisser la boule étaler au rouleau à pâtisserie, tourner d'1/8, étaler à nouveau au rouleau... jusqu'à faire le tour complet."
 - Mettre la fajitas dans la poêle brûlante. Compter 10 secondes par face.
 
 ---
