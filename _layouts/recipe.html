@@ -46,12 +46,17 @@ layout: default
       {% else %}
       <h4 class="olive mt0 mb2 xs-center">Ingrédients</h4>
       <ul>
-        <!-- list ingredients that make up recipe -->
         {% for ingredient in page.ingredients %}
-        <li itemprop="recipeIngredient">{{ ingredient | markdownify }}</li>
+          {% assign matches = ingredient | extract_quantity %}
+          <li itemprop="recipeIngredient" style="margin-bottom: 1rem;">
+            <input type="checkbox">
+            <span class="ingredient-quantity">{{ matches[0] }}</span> <span class="ingredient-unit">{{ matches[1] | strip_html }}</span>
+          </li>
         {% endfor %}
       </ul>
       {% endif %}
+      <h4 class="olive regular xs-center">Quantités</h4>
+      <input type="number" id="quantityInput" value="1" min="0.5" step="0.5" style="width: 70px;">
     </div>
 
     <div class="sm-col sm-col-6 lg-col-6">
@@ -96,7 +101,12 @@ layout: default
       <h4 class="olive regular xs-center">Ingrédients</h4>
         <ul class="ingredients"">
         {% for item in recipe.ingredients %}
-        <li itemprop="recipeIngredient">{{ item | markdownify }}</li>
+        <!-- <li itemprop="recipeIngredient">{{ item | markdownify }}</li> -->
+        {% assign matches = item | extract_quantity %}
+        <li itemprop="recipeIngredient" style="margin-bottom: 1rem;">
+          <input type="checkbox">
+          <span class="ingredient-quantity">{{ matches[0] }}</span> <span class="ingredient-unit">{{ matches[1] | strip_html }}</span>
+        </li>
         {% endfor %}
       </ul>
 
@@ -150,3 +160,32 @@ layout: default
   });
 
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const quantityInput = document.getElementById("quantityInput");
+    const quantityElements = document.querySelectorAll(".ingredient-quantity");
+    const initialQuantities = [];
+
+    quantityElements.forEach((element) => {
+      const match = element.textContent.match(/^(\d+\.?\d*)/);
+      if (match) {
+        initialQuantities.push(parseFloat(match[1]));
+      } else {
+        initialQuantities.push(null);
+      }
+    });
+
+    function updateIngredientsList() {
+  const quantity = parseFloat(quantityInput.value);
+  quantityElements.forEach((element, index) => {
+    if (initialQuantities[index] !== null) {
+      const newQuantity = initialQuantities[index] * quantity;
+      const displayQuantity = newQuantity % 1 === 0 ? newQuantity.toFixed(0) : newQuantity.toFixed(1);
+      element.textContent = displayQuantity;
+    }
+  });
+}
+    quantityInput.addEventListener("input", updateIngredientsList);
+  });
+  </script>
