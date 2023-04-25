@@ -22,7 +22,7 @@ ingredients:
 - 150 g de noix de coco rapée
 - 75 g de farine
 - 100 g de beurre fondu
-- 1 voire 2 cs de rhum (arrangé si il y a)
+- 2 cs de rhum (arrangé si il y a)
 - 1 sachet de levure chimique
 
 directions:

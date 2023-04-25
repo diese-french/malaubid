@@ -22,7 +22,7 @@ ingredients:
 - 250g de beurre
 - 4 oeufs entiers
 - 180g de lait
-- 1 parfum (vanille, citron...)
+- parfum (vanille, citron...)
 
 directions:
 - Faire fondre le beurre

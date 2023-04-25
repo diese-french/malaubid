@@ -21,7 +21,10 @@ ingredients:
 - 100 g de fromage de brebis frais
 - 15 cl de crême liquide
 - 1 oeuf
-- Pour la pâte : 180 g de farine, 4 cuillère à soupe d'huile d'olive et une pincée d'origan
+- "Pour la pâte:"
+- 180 g de farine
+- 4 cuillères à soupe d'huile d'olive
+- 1 pincée d'origan
 
 directions:
 - Oter les graines du potimarron et le couper en tranches fines (un peu comme une pomme pour une tarte au pomme).

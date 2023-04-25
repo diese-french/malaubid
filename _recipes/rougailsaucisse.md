@@ -16,7 +16,7 @@ totalTime: 40 minutes
 yield: 6 personnes
 
 ingredients:
-- 4 à 5 grosses saucisses (montbeliard, diots...)
+- 4 grosses saucisses (montbeliard, diots...)
 - 2 gros oignons hachés
 - 2 boites de tomates pelées
 - 2 gousses d'ail

@@ -21,8 +21,8 @@ ingredients:
 - 200 g de farine
 - 1 œuf
 - 100 g de beurre mou
-- 1/2 sachet de levure chimique
-- 1/2 cc d’extrait de vanille
+- 0.5 sachet de levure chimique
+- 0.5 cc d’extrait de vanille
 
 directions:
 - Hacher le chocolat en pépites (ou utiliser des pépites toutes faites mais c’est moins bon). Réserver au frais

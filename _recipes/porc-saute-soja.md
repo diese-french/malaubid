@@ -17,7 +17,7 @@ totalTime: 30 minutes
 yield: 3 personnes
 
 ingredients:
-- Échine de porc (450 g) 
+- 450g d'échine de porc 
 - 2 petites boites de pousses de haricot mungo (ou pousses de soja)
 - 2 oignons
 - 3 gousses d'ail

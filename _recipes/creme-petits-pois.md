@@ -21,7 +21,7 @@ ingredients:
 - 2 carottes 
 - 20 g de beurre 
 - 750 g de petits pois frais ou surgelés 
-- 1,5 l de fond de veau / bouillon
+- 1.5 l de fond de veau / bouillon
 - 200 grammes de lard fumé en tranches
 - 10 cl de crème liquide (facultatif)
 

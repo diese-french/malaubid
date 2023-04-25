@@ -18,10 +18,10 @@ yield: 8 parts
 
 ingredients:
 - 1 moule à tatin qui va sur le feu
-- 10 à 12 pommes (Bosoop, Reinette du Canada, golden)
+- 10 pommes (Bosoop, Reinette du Canada, golden)
 - 150 g de beurre
 - 150 g de sucre
-- 1 [pâte brisée](../recipes/pate-brisee.html)
+- 1 pâte brisée
 - Crème fraîche entière (Isigny ou crème de ferme) (facultatif)
 
 

@@ -18,11 +18,11 @@ yield: 8 personnes
 ingredients:
 - 250 g de potimarron
 - 3 cl d’huile d’olive
-- Le jus d’un petit citron
+- 1 jus de citron
 - 1 bonne cc de tahin (purée de sésame)
 - 1 petite cc de cumin
 - 1 petite gousse d’ail
-- Une poignée de coriandre
+- 1 poignée de coriandre
 
 directions:
 - Laver et couper le potimarron en cube (pas besoin d'éplucher)

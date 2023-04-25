@@ -16,8 +16,8 @@ totalTime: 60 minutes
 yield: 4-6 personnes
 
 ingredients:
-- 1.2 [pâte brisée](../recipes/pate-brisee.html) (300 g de farine, 150 g de beurre)
-- 6-800 g de poireaux
+- 1.2 pâte brisée
+- 600 g de poireaux
 - 40 g de beurre
 - 40 g de farine
 - 30 cl de lait

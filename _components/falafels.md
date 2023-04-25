@@ -15,13 +15,13 @@ totalTime: 12h30
 ingredients:
 - 500 g de pois chiches secs (non cuits)
 - 4 gousses d'ail
-- 1/2 bouquet de persil frais 
-- 1/2 bouquet de coriandre fraîche
+- 0.5 bouquet de persil frais
+- 0.5 bouquet de coriandre fraîche
 - 1 oignon 
 - 2 cuillère à café de Coriandre en poudre
 - 2 cuillère à café de cumin en poudre 
 - 1 cuillère à café de cardamone en poudre ou de cumin
-- 1/2 sachet de levure ou 1 cuillère à café de bicarbonate de soude
+- 0.5 sachet de levure ou 1 cuillère à café de bicarbonate de soude
 
 directions:
 - Laisser tremper les pois chiches une nuit dans deux fois leur volume en eau froide

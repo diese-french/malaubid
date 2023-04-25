@@ -18,7 +18,7 @@ ingredients:
 - 1 cuillère à café de cumin
 - quelques feuilles de persil frais
 - 1 cuillère à café de poivre blanc
-- 1/2 citron
+- 0.5 citron
 
 directions:
 - Verser le yaourt dans un bol et ajouter le citron.

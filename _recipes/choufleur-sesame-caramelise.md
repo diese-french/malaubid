@@ -24,7 +24,7 @@ ingredients:
 - 4 cc de graines des sésame
 - 3 cc de fécule de maïs
 - 1 cc de gingembre moulu
-- 1/2 cc de piment (flocons, poudre...)
+- 0.5 cc de piment (flocons, poudre...)
 - 4 gousses d'ail
 - 2 échalotes
 - huile de sésame
