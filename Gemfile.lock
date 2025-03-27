@@ -69,7 +69,7 @@ GEM
     logger (1.7.0)
     mercenary (0.4.0)
     mini_magick (5.0.1)
-    nokogiri (1.18.3-x86_64-linux-gnu)
+    nokogiri (1.18.4-x86_64-linux-gnu)
       racc (~> 1.4)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
