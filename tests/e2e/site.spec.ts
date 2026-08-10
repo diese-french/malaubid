@@ -81,6 +81,25 @@ test('simple recipe renders metadata, equipment, ingredients, and steps without 
   );
 });
 
+test('recipe notes appear once beside the title', async ({ page }) => {
+  await page.goto('/recettes/brioche-nanterre/');
+  await expect(
+    page.getByText(
+      'Utiliser des ingrédients froids évite la surchauffe au pétrissage, et la fonte du beurre.',
+      { exact: true },
+    ),
+  ).toHaveCount(1);
+  await expect(
+    page.getByText(
+      'Utiliser un bon beurre extra fin et de la farine dite forte (de Gruau), c’est ce qui donnera le bon goût à la brioche.',
+      { exact: true },
+    ),
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', { level: 2, name: 'Notes' }),
+  ).toHaveCount(0);
+});
+
 test('composite recipe renders nested preparations and scales every component from immutable bases', async ({
   page,
 }) => {

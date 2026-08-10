@@ -46,10 +46,7 @@ function flattenTree(node: ResolvedRecipe): ResolvedRecipe[] {
 }
 
 const { Content: RootContent } = await render(entry);
-const rootBody = entry.body?.trim();
-const rootHasBody = Boolean(
-  rootBody && rootBody !== entry.data.description?.trim(),
-);
+const rootHasBody = Boolean(entry.body?.trim());
 const componentContents = flattenTree(tree).slice(1);
 const canonicalPath = `/recettes/${entry.id}/`;
 const canonicalUrl = new URL(canonicalPath, Astro.site).href;
@@ -123,8 +120,14 @@ const durations = [
           }
           <h1>{entry.data.title}</h1>
           {
-            entry.data.description && (
-              <p class="lede">{entry.data.description}</p>
+            rootHasBody ? (
+              <div class="lede summary-notes">
+                <RootContent />
+              </div>
+            ) : (
+              entry.data.description && (
+                <p class="lede">{entry.data.description}</p>
+              )
             )
           }
           <p class="byline">
@@ -218,16 +221,6 @@ const durations = [
         </aside>
         <div>
           <InstructionList resolved={tree} />
-          {
-            rootHasBody && (
-              <section class="notes">
-                <h2>Notes</h2>
-                <div class="prose">
-                  <RootContent />
-                </div>
-              </section>
-            )
-          }
         </div>
       </div>
 
@@ -319,6 +312,14 @@ const durations = [
     max-width: 38rem;
   }
 
+  .summary-notes :global(p) {
+    margin-block: 0 0.75rem;
+  }
+
+  .summary-notes :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
   .byline {
     margin-bottom: 0;
     color: var(--color-muted);
@@ -370,8 +371,7 @@ const durations = [
 
   .component-summary h2,
   .scaler h2,
-  .equipment h2,
-  .notes h2 {
+  .equipment h2 {
     margin: 0 0 0.75rem;
     color: var(--color-accent);
     font-size: 1rem;
@@ -427,17 +427,8 @@ const durations = [
     font-size: 0.8rem;
   }
 
-  .equipment,
-  .notes {
+  .equipment {
     margin-top: 2rem;
-  }
-
-  .prose :global(p:first-child) {
-    margin-top: 0;
-  }
-
-  .prose :global(p:last-child) {
-    margin-bottom: 0;
   }
 
   .component-divider {
