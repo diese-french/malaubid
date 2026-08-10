@@ -15,10 +15,6 @@ durations:
   totalMinutes: 60
 ingredientGroups:
   - ingredients:
-      - name: pâte brisée
-        amount:
-          type: exact
-          value: 1.2
       - name: poireaux
         amount:
           type: exact
@@ -66,7 +62,9 @@ instructionSections:
       - text: Badigeonner avec le jaune d’œuf.
       - text: Cuire à 190°C pendant 30 minutes.
         timerMinutes: 30
-components: []
+components:
+  - id: pate-brisee
+    factor: 1.2
 hero:
   src: './hero.jpg'
   alt: Flamiche aux poireaux prêt à être dégusté

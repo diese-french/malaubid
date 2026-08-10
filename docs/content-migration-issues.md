@@ -25,7 +25,7 @@ Additional duration anomalies:
 - `flamiche-poireaux` said `4-6 personnes`. The numeric base yield is 6 with label `personnes`, preserving the upper bound required by the scalar yield schema.
 - `pate-brisee` said `1 tarte 6/8 parts`. It is represented as quantity 1 with label `tarte 6/8 parts`; the slash remains unresolved.
 - `pain-semoule` said `un pain de 24 cm`. It is represented as quantity 1 with label `pain de 24 cm`.
-- `flamiche-poireaux` contains `1.2 pâte brisée`. The unusual decimal is preserved as a numeric amount.
+- `flamiche-poireaux` uses 1.2 times the base yield of `pate-brisee`. It is represented as a component with `factor: 1.2`, so parent yield scaling propagates to the linked recipe.
 - `baklawa` describes `250 g de pâte filo (10/12 feuilles)`. The mass is canonical and the leaf count remains a note because the slash is ambiguous.
 - `pancakes` describes `3 g de sel (ou beurre salé)`. The note is preserved; the source does not provide a quantity of salted butter for a valid structured alternative.
 - Source ingredients without quantities (`huile de sésame`, `feta`, `sauce soja`, spices, herbs, and similar items) use qualitative, non-scalable amounts such as `selon le goût` rather than invented numbers.
@@ -35,6 +35,8 @@ Additional duration anomalies:
 - The source heading `Béchamel :` in `moussaka` and `Pour la pâte:` in `tartepotimarron` are ingredient-group titles, not ingredients.
 - Macaron ingredients are grouped into `Base`, `Meringue`, and `Crème et parfums` from their source annotations.
 - The `moule à tatin` entry moved from ingredients to equipment.
+- The pâte brisée consumed by `flamiche-poireaux` and `tarte-tatin` is represented by a typed `pate-brisee` component reference rather than a duplicated plain ingredient. Their factors are 1.2 and 1 respectively.
+- The reciprocal serving suggestions between `pain-pita` and `houmous-potimarron` remain ordinary prose links because neither recipe consumes or scales the other.
 - The brioche tressée source amount `3 œufs (+ 1 pour la dorure)` is represented as two ingredient lines so both quantities scale coherently.
 - Baklawa's 120 g of butter is split into the source-prescribed 20 g for the filling and 100 g for the pastry layers. The total remains 120 g.
 - The old gnocchi step link pointed to a generated Jekyll image path. The original image is now colocated as a step image with alt text.

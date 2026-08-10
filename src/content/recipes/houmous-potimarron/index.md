@@ -70,4 +70,4 @@ hero:
   alt: Houmous de potimarron prêt à être dégusté
 ---
 
-Très bon pour l'apéro, ça va très bien avec le [pain pita](../recipes/pain-pita.html)
+Très bon pour l'apéro, ça va très bien avec le [pain pita](/recettes/pain-pita/)

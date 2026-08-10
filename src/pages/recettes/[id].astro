@@ -10,6 +10,7 @@ import { getCategoryLabel } from '../../lib/recipes/categories';
 import {
   durationToIso,
   formatDuration,
+  formatNumber,
   formatYield,
   resolveRecipeTree,
 } from '../../lib/recipes/domain';
@@ -159,10 +160,25 @@ const durations = [
           {
             tree.components.length > 0 && (
               <section class="component-summary">
-                <h2>Étapes</h2>
+                <h2>Préparations</h2>
                 <ul>
                   {tree.components.map((component) => (
-                    <li>{component.recipe.data.title}</li>
+                    <li data-component-reference={component.recipe.id}>
+                      <span
+                        class="component-factor"
+                        data-component-factor={component.recipe.id}
+                        data-base-amount={JSON.stringify({
+                          type: 'exact',
+                          value: component.factor,
+                        })}
+                      >
+                        {formatNumber(component.factor)}
+                      </span>{' '}
+                      ×{' '}
+                      <a href={`/recettes/${component.recipe.id}/`}>
+                        {component.recipe.data.title}
+                      </a>
+                    </li>
                   ))}
                 </ul>
               </section>
@@ -241,7 +257,11 @@ const durations = [
                     data-component-id={resolved.recipe.id}
                   >
                     <header>
-                      <h3>{resolved.recipe.data.title}</h3>
+                      <h3>
+                        <a href={`/recettes/${resolved.recipe.id}/`}>
+                          {resolved.recipe.data.title}
+                        </a>
+                      </h3>
                     </header>
                     <div class="component-grid">
                       <IngredientList resolved={resolved} component />
@@ -381,6 +401,11 @@ const durations = [
   .equipment ul {
     padding-left: 1.2rem;
     margin-block: 0;
+  }
+
+  .component-factor {
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
   }
 
   .input-row {

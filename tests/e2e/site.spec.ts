@@ -54,7 +54,7 @@ test('home search filters recipes without case or accent sensitivity', async ({
   await expect(page.locator('[data-search-status]')).toBeEmpty();
 });
 
-test('simple recipe renders metadata, equipment, ingredients, and steps without duplicating its introduction', async ({
+test('recipe renders metadata, equipment, ingredients, and steps without duplicating its introduction', async ({
   page,
 }) => {
   await page.goto('/recettes/tarte-tatin/');
@@ -62,13 +62,19 @@ test('simple recipe renders metadata, equipment, ingredients, and steps without 
     page.getByRole('heading', { level: 1, name: 'Tarte tatin' }),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', { level: 2, name: 'Ingrédients' }),
+    page
+      .getByRole('complementary')
+      .getByRole('heading', { level: 2, name: 'Ingrédients' }),
   ).toBeVisible();
   await expect(
     page.getByRole('heading', { level: 2, name: 'Matériel' }),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', { level: 2, name: 'Préparation' }),
+    page.getByRole('heading', {
+      level: 2,
+      name: 'Préparation',
+      exact: true,
+    }),
   ).toBeVisible();
   await expect(
     page.getByText(
@@ -79,6 +85,9 @@ test('simple recipe renders metadata, equipment, ingredients, and steps without 
   await expect(page.locator('time[datetime="PT1H30M"]')).toHaveText(
     '1 h 30 min',
   );
+  await expect(
+    page.locator('[data-component-reference="pate-brisee"]'),
+  ).toContainText('1 × Pâte brisée');
 });
 
 test('recipe notes appear once beside the title', async ({ page }) => {
@@ -98,6 +107,38 @@ test('recipe notes appear once beside the title', async ({ page }) => {
   await expect(
     page.getByRole('heading', { level: 2, name: 'Notes' }),
   ).toHaveCount(0);
+});
+
+test('linked preparation factors and ingredients scale with their parent recipe', async ({
+  page,
+}) => {
+  await page.goto('/recettes/flamiche-poireaux/');
+
+  const reference = page.locator('[data-component-reference="pate-brisee"]');
+  await expect(reference).toContainText('1,2 × Pâte brisée');
+  await expect(
+    reference.getByRole('link', { name: 'Pâte brisée' }),
+  ).toHaveAttribute('href', '/recettes/pate-brisee/');
+
+  const factor = page.locator('[data-component-factor="pate-brisee"]');
+  const componentFlour = page.locator(
+    '[data-component-id="pate-brisee"] [data-ingredient-name="farine"] .amount',
+  );
+  await expect(componentFlour).toHaveText('300 g');
+
+  await page.locator('[data-yield-input]').fill('12');
+  await expect(factor).toHaveText('2,4');
+  await expect(componentFlour).toHaveText('600 g');
+});
+
+test('prose recommendations link to related recipes without composing them', async ({
+  page,
+}) => {
+  await page.goto('/recettes/pain-pita/');
+  await expect(
+    page.getByRole('link', { name: /houmous de potimarron/ }),
+  ).toHaveAttribute('href', '/recettes/houmous-potimarron/');
+  await expect(page.locator('[data-component-reference]')).toHaveCount(0);
 });
 
 test('composite recipe renders nested preparations and scales every component from immutable bases', async ({

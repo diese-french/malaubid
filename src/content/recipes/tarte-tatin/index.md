@@ -30,10 +30,6 @@ ingredientGroups:
           type: exact
           value: 150.0
           unit: g
-      - name: pâte brisée
-        amount:
-          type: exact
-          value: 1.0
       - name: crème fraîche entière
         amount:
           type: qualitative
@@ -61,7 +57,9 @@ instructionSections:
       - text: Sortir du four et laisser reposer 5 minutes
       - text: "Moment délicat : placer un plat avec des bords (pour le jus) sur le moule, et retourner d'un coup"
       - text: Retirer le moule, servir chaud avec une cuillère de crème fraîche sur la part
-components: []
+components:
+  - id: pate-brisee
+    factor: 1
 hero:
   src: './hero.jpg'
   alt: Tarte tatin prêt à être dégusté
