@@ -17,6 +17,43 @@ test('home lists only public recipes in French alphabetical order', async ({
   await expect(page.getByText(/À table|prêtes à cuisiner/i)).toHaveCount(0);
 });
 
+test('home search filters recipes without case or accent sensitivity', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const search = page.getByRole('searchbox', {
+    name: 'Rechercher une recette',
+  });
+  const visibleCards = page.locator('[data-recipe-card]:visible');
+
+  await search.fill('PATE BRISEE');
+  await expect(visibleCards).toHaveCount(3);
+  await expect(visibleCards.locator('[data-recipe-title]')).toHaveText([
+    'Flamiche aux poireaux',
+    'Pâte brisée',
+    'Tarte tatin',
+  ]);
+  await expect(page.locator('[data-search-status]')).toHaveText('3 recettes');
+
+  await search.fill('amande en poudre');
+  await expect(visibleCards).toHaveCount(3);
+  await expect(visibleCards.locator('[data-recipe-title]')).toHaveText([
+    'Baklawa',
+    'Financiers',
+    'Macarons et crème',
+  ]);
+
+  await search.fill('recette inexistante');
+  await expect(visibleCards).toHaveCount(0);
+  await expect(page.locator('[data-search-status]')).toHaveText(
+    'Aucune recette',
+  );
+
+  await search.fill('');
+  await expect(visibleCards).toHaveCount(34);
+  await expect(page.locator('[data-search-status]')).toBeEmpty();
+});
+
 test('simple recipe renders metadata, equipment, ingredients, and steps without duplicating its introduction', async ({
   page,
 }) => {
