@@ -17,41 +17,35 @@ ingredientGroups:
   - ingredients:
       - name: farine
         amount:
-          type: exact
           value: 250.0
           unit: g
       - name: beurre
         amount:
-          type: exact
           value: 125.0
           unit: g
       - name: sel si beurre doux
         amount:
-          type: exact
           value: 1.0
           unit: pinch
       - name: jaune d’œuf
         amount:
-          type: exact
           value: 1.0
       - name: eau
         amount:
-          type: exact
           value: 50.0
           unit: ml
 instructionSections:
   - title: Préparation
     steps:
-      - text: Faire une fontaine avec la farine sur le plan de travail
-      - text: Ajouter le beurre ramolli en petits morceaux
-      - text: Sabler du bout des doigts sans trop travailler
-      - text: Refaire une fontaine, ajouter le jaune d’œuf
-      - text: Malaxer du bout des doigts depuis le centre, en ajoutant l'eau petit à petit
-      - text: Incorporer toute la farine jusqu'à l'obtention d'une boule
-      - text: Fraiser la pâte pour l'homogénéiser, sans trop la travailler
-      - text: Mettre au frais au minimum 30 minutes
-      - text: Abaisser sur un plan fariné, étaler au rouleau
-components: []
+      - Faire une fontaine avec la farine sur le plan de travail
+      - Ajouter le beurre ramolli en petits morceaux
+      - Sabler du bout des doigts sans trop travailler
+      - Refaire une fontaine, ajouter le jaune d’œuf
+      - Malaxer du bout des doigts depuis le centre, en ajoutant l'eau petit à petit
+      - Incorporer toute la farine jusqu'à l'obtention d'une boule
+      - Fraiser la pâte pour l'homogénéiser, sans trop la travailler
+      - Mettre au frais au minimum 30 minutes
+      - Abaisser sur un plan fariné, étaler au rouleau
 hero:
   src: './hero.jpg'
   alt: Pâte brisée prêt à être dégusté

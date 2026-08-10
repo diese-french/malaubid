@@ -4,6 +4,10 @@ import path from 'node:path';
 import { parse } from 'yaml';
 
 import { CATEGORY_IDS } from '../src/lib/recipes/categories';
+import {
+  normalizeAmount,
+  type AmountInput,
+} from '../src/lib/recipes/authoring';
 import type {
   Amount,
   RecipeData,
@@ -80,7 +84,31 @@ async function loadRecipe(directoryName: string): Promise<RecipeSource> {
     yaml,
     `${directoryName}: index.md requires non-empty YAML frontmatter.`,
   );
-  const data = parse(yaml) as RecipeData;
+  const parsedData = parse(yaml) as RecipeData;
+  const data: RecipeData = {
+    ...parsedData,
+    components: parsedData.components ?? [],
+    ingredientGroups: parsedData.ingredientGroups.map((group) => ({
+      ...group,
+      ingredients: group.ingredients.map((ingredient) => {
+        const alternatives = ingredient.alternatives?.map((alternative) => ({
+          ...alternative,
+          amount: normalizeAmount(alternative.amount as AmountInput),
+        }));
+        return {
+          ...ingredient,
+          amount: normalizeAmount(ingredient.amount as AmountInput),
+          ...(alternatives ? { alternatives } : {}),
+        };
+      }),
+    })),
+    instructionSections: parsedData.instructionSections.map((section) => ({
+      ...section,
+      steps: section.steps.map((step) =>
+        typeof step === 'string' ? { text: step } : step,
+      ),
+    })),
+  };
 
   assert(
     data.schemaVersion === 1,

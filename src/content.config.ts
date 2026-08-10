@@ -2,6 +2,7 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
+import { normalizeAmount } from './lib/recipes/authoring';
 import { CATEGORY_IDS } from './lib/recipes/categories';
 import { UNIT_CODES } from './lib/recipes/units';
 
@@ -10,34 +11,38 @@ const positiveNumber = z.number().positive();
 const minutes = z.number().int().nonnegative();
 const unit = z.enum(UNIT_CODES);
 
-const exactAmount = z.object({
-  type: z.literal('exact'),
-  value: positiveNumber,
-  unit: unit.optional(),
-});
+const exactAmount = z
+  .object({
+    type: z.literal('exact').optional(),
+    value: positiveNumber,
+    unit: unit.optional(),
+  })
+  .strict()
+  .transform(normalizeAmount);
 
 const rangeAmount = z
   .object({
-    type: z.literal('range'),
+    type: z.literal('range').optional(),
     min: positiveNumber,
     max: positiveNumber,
     unit: unit.optional(),
   })
+  .strict()
   .refine(
     ({ min, max }) => max >= min,
     'A range maximum must be greater than or equal to its minimum.',
-  );
+  )
+  .transform(normalizeAmount);
 
-const qualitativeAmount = z.object({
-  type: z.literal('qualitative'),
-  text: nonEmptyString,
-});
+const qualitativeAmount = z
+  .object({
+    type: z.literal('qualitative').optional(),
+    text: nonEmptyString,
+  })
+  .strict()
+  .transform(normalizeAmount);
 
-const amount = z.discriminatedUnion('type', [
-  exactAmount,
-  rangeAmount,
-  qualitativeAmount,
-]);
+const amount = z.union([exactAmount, rangeAmount, qualitativeAmount]);
 
 const alternative = z.object({
   name: nonEmptyString,
@@ -77,6 +82,18 @@ const recipes = defineCollection({
       credit: nonEmptyString.optional(),
       caption: nonEmptyString.optional(),
     });
+    const structuredInstructionStep = z.object({
+      text: nonEmptyString,
+      timerMinutes: positiveNumber.optional(),
+      image: recipeImage.optional(),
+      ingredientKeys: z.array(nonEmptyString).min(1).optional(),
+    });
+    const instructionStep = z.union([
+      structuredInstructionStep,
+      nonEmptyString.transform(
+        (text): z.output<typeof structuredInstructionStep> => ({ text }),
+      ),
+    ]);
 
     return z
       .object({
@@ -130,16 +147,7 @@ const recipes = defineCollection({
         instructionSections: z.array(
           z.object({
             title: nonEmptyString.optional(),
-            steps: z
-              .array(
-                z.object({
-                  text: nonEmptyString,
-                  timerMinutes: positiveNumber.optional(),
-                  image: recipeImage.optional(),
-                  ingredientKeys: z.array(nonEmptyString).min(1).optional(),
-                }),
-              )
-              .min(1),
+            steps: z.array(instructionStep).min(1),
           }),
         ),
         components: z

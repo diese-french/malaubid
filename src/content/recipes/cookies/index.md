@@ -17,52 +17,44 @@ ingredientGroups:
   - ingredients:
       - name: chocolat
         amount:
-          type: exact
           value: 150.0
           unit: g
       - name: sucre roux
         amount:
-          type: exact
           value: 200.0
           unit: g
       - name: farine
         amount:
-          type: exact
           value: 200.0
           unit: g
       - name: œuf
         amount:
-          type: exact
           value: 1.0
       - name: beurre mou
         amount:
-          type: exact
           value: 100.0
           unit: g
       - name: levure chimique
         amount:
-          type: exact
           value: 0.5
           unit: packet
       - name: extrait de vanille
         amount:
-          type: exact
           value: 0.5
           unit: tsp
 instructionSections:
   - title: Préparation
     steps:
-      - text: Hacher le chocolat en pépites (ou utiliser des pépites toutes faites mais c’est moins bon). Réserver au frais
-      - text: Battre l’oeuf
-      - text: Ajouter le sucre et battre à nouveau pour faire mousser le mélange
-      - text: Tamiser la farine et la levure et mélanger petit à petit, on doit obtenir un mélange sablé
-      - text: Ajouter les morceaux de beurre mou et travailler pour obtenir une pâte homogène
-      - text: Ajouter le chocolat et travailler juste ce qu’il faut pour homogénéiser
-      - text: Sur une plaque, former des petits tas de pâte (30 g) bien espacés
-      - text: Légèrement aplatir, mais pas trop, ça s’étale à la cuisson
-      - text: 'Solution alternative : former un boudin de pâte, rouler dans du papier sulfurisé et placer au freezer le temps de préchauffer le four. On aura juste à couper des morceaux.'
-      - text: Cuire 10 minutes à 180°C. Les bords des cookies doivent commencer à craqueler. Cuire selon le goût, penser qu’ils continuent à cuire une fois sortis du four.
-components: []
+      - Hacher le chocolat en pépites (ou utiliser des pépites toutes faites mais c’est moins bon). Réserver au frais
+      - Battre l’oeuf
+      - Ajouter le sucre et battre à nouveau pour faire mousser le mélange
+      - Tamiser la farine et la levure et mélanger petit à petit, on doit obtenir un mélange sablé
+      - Ajouter les morceaux de beurre mou et travailler pour obtenir une pâte homogène
+      - Ajouter le chocolat et travailler juste ce qu’il faut pour homogénéiser
+      - Sur une plaque, former des petits tas de pâte (30 g) bien espacés
+      - Légèrement aplatir, mais pas trop, ça s’étale à la cuisson
+      - 'Solution alternative : former un boudin de pâte, rouler dans du papier sulfurisé et placer au freezer le temps de préchauffer le four. On aura juste à couper des morceaux.'
+      - Cuire 10 minutes à 180°C. Les bords des cookies doivent commencer à craqueler. Cuire selon le goût, penser qu’ils continuent à cuire une fois sortis du four.
 hero:
   src: './hero.jpg'
   alt: Cookies prêt à être dégusté

@@ -17,29 +17,24 @@ ingredientGroups:
   - ingredients:
       - name: aubergine
         amount:
-          type: exact
           value: 1.0
       - name: oignon
         amount:
-          type: exact
           value: 1.0
       - name: tomates moyennes
         amount:
-          type: exact
           value: 2.0
         note: ou pulpe
       - name: feta
         amount:
-          type: qualitative
           text: selon le goût
         scalable: false
 instructionSections:
   - title: Préparation
     steps:
-      - text: Mixer aubergine, oignons et tomates finement.
-      - text: Faire mijoter à couvert avec huile d'olive, sel, poivre et herbes pendant 20-30 minutes.
-      - text: Ajouter la feta hachée.
-components: []
+      - Mixer aubergine, oignons et tomates finement.
+      - Faire mijoter à couvert avec huile d'olive, sel, poivre et herbes pendant 20-30 minutes.
+      - Ajouter la feta hachée.
 ---
 
 Une sauce express super simple à réaliser. Quantité à ajuster suivant ce que vous avez à disposition.

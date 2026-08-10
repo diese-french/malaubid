@@ -28,6 +28,8 @@
 - Numeric ingredient amounts scale by default. Qualitative amounts do not. Explicit `scalable: false` always wins.
 - Component IDs must exist, factors must be positive, and component graphs must remain acyclic.
 - Ingredient keys are unique inside an entry. Every key referenced by a step must exist in that entry.
+- Author amount variants by shape (`value`, `min`/`max`, or `text`) without a derived `type` field; collection validation restores the discriminated domain type.
+- Write plain instruction steps as strings. Use `{ text, ...metadata }` only for steps with timers, images, or ingredient keys, and omit empty `components` lists.
 - Every local image requires useful alt text. A missing hero is valid and must render the designed placeholder.
 - Do not repeat scalable absolute ingredient quantities in step prose. Refer to the named ingredient instead.
 - Preserve canonical units during scaling; v1 performs no unit conversion.

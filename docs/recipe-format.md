@@ -38,7 +38,6 @@ ingredientGroups:
       - key: pommes
         name: pommes
         amount:
-          type: exact
           value: 4
 instructionSections:
   - title: Préparation
@@ -47,7 +46,6 @@ instructionSections:
         ingredientKeys: [pommes]
       - text: Rôtir jusqu’à ce qu’elles soient tendres.
         timerMinutes: 30
-components: []
 ---
 ```
 
@@ -72,43 +70,44 @@ ingredientGroups:
   - title: Pâte
     ingredients:
       - name: farine
-        amount: { type: exact, value: 250, unit: g }
+        amount: { value: 250, unit: g }
       - name: eau
         approximate: true
-        amount: { type: range, min: 50, max: 70, unit: ml }
+        amount: { min: 50, max: 70, unit: ml }
       - name: sel
         scalable: false
-        amount: { type: qualitative, text: selon le goût }
+        amount: { text: selon le goût }
   - title: Garniture
     ingredients:
       - name: pommes
-        amount: { type: exact, value: 6 }
+        amount: { value: 6 }
         alternatives:
           - name: poires
-            amount: { type: exact, value: 6 }
+            amount: { value: 6 }
             note: mûres mais fermes
       - name: cannelle
         optional: true
-        amount: { type: exact, value: 1, unit: tsp }
+        amount: { value: 1, unit: tsp }
 equipment:
   - name: moule à tarte
     quantity: 1
 instructionSections:
   - title: Pâte
     steps:
-      - text: Mélanger les ingrédients de la pâte.
+      - Mélanger les ingrédients de la pâte.
   - title: Montage
     steps:
-      - text: Garnir la pâte avec les fruits puis cuire.
-components: []
+      - Garnir la pâte avec les fruits puis cuire.
 ---
 ```
 
-An amount is exactly one of:
+The authoring shape determines the amount variant:
 
-- Exact: `{ type: exact, value: 125, unit: g }`
-- Range: `{ type: range, min: 10, max: 12, unit: piece }`
-- Qualitative: `{ type: qualitative, text: selon le goût }`
+- Exact: `{ value: 125, unit: g }`
+- Range: `{ min: 10, max: 12, unit: piece }`
+- Qualitative: `{ text: selon le goût }`
+
+Astro normalizes these shapes to the internal discriminated union with `type: exact`, `type: range`, or `type: qualitative`. Recipe files omit that derived `type` field.
 
 Numeric values must be positive. A range requires `max >= min`. Numeric amounts scale by default; qualitative amounts do not. Set `scalable: false` only when a numeric amount must remain fixed. Alternatives have their own `name`, `amount`, and optional `note`, but cannot contain further alternatives.
 
@@ -130,12 +129,11 @@ durations: { prepMinutes: 5 }
 ingredientGroups:
   - ingredients:
       - name: yaourt
-        amount: { type: exact, value: 200, unit: g }
+        amount: { value: 200, unit: g }
 instructionSections:
   - title: Préparation
     steps:
-      - text: Mélanger jusqu’à obtenir une sauce lisse.
-components: []
+      - Mélanger jusqu’à obtenir une sauce lisse.
 ---
 ```
 
@@ -155,11 +153,11 @@ durations: { prepMinutes: 20 }
 ingredientGroups:
   - ingredients:
       - name: légumes rôtis
-        amount: { type: exact, value: 800, unit: g }
+        amount: { value: 800, unit: g }
 instructionSections:
   - title: Assemblage
     steps:
-      - text: Servir les légumes avec la sauce.
+      - Servir les légumes avec la sauce.
 components:
   - id: sauce-exemple
     factor: 0.5
@@ -167,6 +165,8 @@ components:
 ```
 
 The component graph must be acyclic. A parent yield scale propagates as `parent scale × component factor`, including nested preparations.
+
+Omit `components` when an entry has none; Astro normalizes the missing field to an empty array. When components exist, keep their IDs and factors explicit.
 
 ## Identity and visibility
 
@@ -218,7 +218,7 @@ For a recipe with a base yield of 4, entering 6 computes a scale of `6 / 4 = 1.5
 - `10–12 piece` becomes `15–18 pièces`.
 - A numeric alternative scales by the same factor.
 - A component with factor `0.5` receives an effective factor of `1.5 × 0.5 = 0.75`.
-- `{ type: qualitative, text: selon le goût }` does not change.
+- `{ text: selon le goût }` does not change.
 - A numeric ingredient with `scalable: false` does not change.
 - Equipment, timers, prose, and duration metadata do not change.
 
@@ -230,7 +230,16 @@ The browser always recalculates from immutable base values. It never rescales al
 
 Equipment items contain `name` and optional positive `quantity`, `optional`, and `note` fields. Do not encode cookware as an ingredient.
 
-`instructionSections` and their `steps` are ordered. Every section has at least one step. A step has plain-text `text` and may have `timerMinutes`, `image`, or `ingredientKeys`. Keys are only needed when a step explicitly references ingredients; they must be unique within the entry and every reference must resolve.
+`instructionSections` and their `steps` are ordered. Every section has at least one step. Write a plain step directly as a string. Use an object with required `text` only when the step also has `timerMinutes`, `image`, or `ingredientKeys`:
+
+```yaml
+steps:
+  - Mélanger les ingrédients.
+  - text: Laisser reposer la pâte.
+    timerMinutes: 60
+```
+
+Astro normalizes string steps to `{ text: "…" }` for the internal typed model. Ingredient keys are only needed when a step explicitly references ingredients; they must be unique within the entry and every reference must resolve.
 
 Do not repeat an absolute scalable ingredient quantity in step text. Write “Ajouter la farine” instead of “Ajouter 220 g de farine”; the visible ingredient list is the scaling authority. Temperatures, times, shaping sizes, and batch divisions can remain in prose.
 

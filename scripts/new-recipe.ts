@@ -32,18 +32,14 @@ durations:
 ingredientGroups:
   - title: "Ingrédients"
     ingredients:
-      - key: ingredient-exemple
-        name: "ingrédient exemple"
+      - name: "ingrédient exemple"
         amount:
-          type: exact
           value: 100
           unit: g
 instructionSections:
   - title: "Préparation"
     steps:
-      - text: "Préparer l’ingrédient exemple."
-        ingredientKeys: [ingredient-exemple]
-components: []
+      - "Préparer l’ingrédient exemple."
 ---
 
 Ajoutez ici, si nécessaire, une introduction, la provenance, des astuces ou des notes narratives.

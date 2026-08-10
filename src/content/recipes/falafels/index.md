@@ -17,12 +17,12 @@ ingredientGroups: []
 instructionSections:
   - title: Préparation
     steps:
-      - text: Laisser les pois chiches dans l'eau 12h minimum
-      - text: Sécher les pois chiches au moins 2h
-      - text: Préparer la pâte à falafels
-      - text: Pendant la préparation réaliser la sauce et mettre au frais
-      - text: Faire chauffer l'huile pour les falafels et les faire cuire 4 minutes
-      - text: Servir bien chaud
+      - Laisser les pois chiches dans l'eau 12h minimum
+      - Sécher les pois chiches au moins 2h
+      - Préparer la pâte à falafels
+      - Pendant la préparation réaliser la sauce et mettre au frais
+      - Faire chauffer l'huile pour les falafels et les faire cuire 4 minutes
+      - Servir bien chaud
 components:
   - id: falafels-preparation
     factor: 1

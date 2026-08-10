@@ -17,12 +17,12 @@ ingredientGroups: []
 instructionSections:
   - title: Préparation
     steps:
-      - text: Préparer le shortbread, il doit faire environ 1 cm d'épaisseur
-      - text: Pendant la cuisson, préparer le toffee
-      - text: Verser le toffee sur le biscuit tiédi
-      - text: Mettre l'ensemble au frais et préparer le nappage
-      - text: Napper le chocolat sur le toffee froid
-      - text: Une fois le chocolat durci, découper en morceaux l'ensemble. N'attendez pas trop, ou le chocolat aura tendance à être trop cassant
+      - Préparer le shortbread, il doit faire environ 1 cm d'épaisseur
+      - Pendant la cuisson, préparer le toffee
+      - Verser le toffee sur le biscuit tiédi
+      - Mettre l'ensemble au frais et préparer le nappage
+      - Napper le chocolat sur le toffee froid
+      - Une fois le chocolat durci, découper en morceaux l'ensemble. N'attendez pas trop, ou le chocolat aura tendance à être trop cassant
 components:
   - id: shortbread
     factor: 1

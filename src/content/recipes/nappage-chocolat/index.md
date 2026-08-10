@@ -17,14 +17,12 @@ ingredientGroups:
   - ingredients:
       - name: chocolat au lait
         amount:
-          type: exact
           value: 200.0
           unit: g
 instructionSections:
   - title: Préparation
     steps:
-      - text: Faire fondre le chocolat doucement, idéalement au bain marie. Si on utilise le micro onde, faire chauffer quelques secondes, mélanger, et recommencer. Un chocolat trop chaud ne solidifiera pas correctement.
-components: []
+      - Faire fondre le chocolat doucement, idéalement au bain marie. Si on utilise le micro onde, faire chauffer quelques secondes, mélanger, et recommencer. Un chocolat trop chaud ne solidifiera pas correctement.
 ---
 
 Recette du nappage chocolat.
