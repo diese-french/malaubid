@@ -2,96 +2,21 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout
-  title="À propos"
-  description="Malaubid est un carnet de recettes familial, simple à consulter et à partager."
->
+<BaseLayout title="À propos" description="Malaubid, un site de recettes.">
   <article class="about shell">
-    <header>
-      <p class="eyebrow">À propos</p>
-      <h1>Un carnet fait<br />pour durer.</h1>
-      <p class="lede">
-        Malaubid rassemble des recettes familiales, éprouvées, corrigées et
-        transmises au fil des repas.
-      </p>
-    </header>
-    <div class="surface story">
-      <div>
-        <h2>La cuisine avant tout</h2>
-        <p>
-          Pas de classement compliqué ni de fonctions superflues : chaque fiche
-          rassemble les ingrédients, le matériel utile, les étapes et les notes
-          qui aident vraiment au moment de cuisiner.
-        </p>
-      </div>
-      <div>
-        <h2>Des quantités souples</h2>
-        <p>
-          Indiquez le nombre de personnes ou de parts souhaité. Les quantités
-          numériques s’adaptent, tandis que les gestes, les temps, le matériel
-          et les assaisonnements restent fidèles à la recette.
-        </p>
-      </div>
-      <div>
-        <h2>Une histoire collective</h2>
-        <p>
-          Les auteurs d’origine restent crédités sur chaque recette. Les
-          préparations réutilisables — sauces, bases et biscuits — conservent
-          aussi leur place dans le carnet.
-        </p>
-      </div>
-    </div>
-    <a class="back" href="/"
-      >Parcourir toutes les recettes <span aria-hidden="true">→</span></a
-    >
+    <h1>À propos</h1>
+    <p>Malaubid, un site de recettes.</p>
+    <p><a href="/">Retour aux recettes</a></p>
   </article>
 </BaseLayout>
 
 <style>
   .about {
-    padding-block: clamp(4rem, 10vw, 8rem);
+    max-width: 40rem;
+    padding-block: 6rem;
   }
 
-  header {
-    display: grid;
-    align-items: end;
-    gap: 2rem 6rem;
-    grid-template-columns: minmax(0, 1.2fr) minmax(17rem, 0.8fr);
-  }
-
-  h1,
-  header p {
-    margin-block: 0;
-  }
-
-  .story {
-    display: grid;
-    gap: 2.5rem;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-top: clamp(3rem, 8vw, 6rem);
-    padding: clamp(1.5rem, 4vw, 3rem);
-  }
-
-  .story h2 {
+  h1 {
     margin-top: 0;
-    font-size: 1.65rem;
-  }
-
-  .story p {
-    margin-bottom: 0;
-    color: var(--color-muted);
-  }
-
-  .back {
-    display: inline-block;
-    margin-top: 2.5rem;
-    font-weight: 800;
-  }
-
-  @media (max-width: 48rem) {
-    header,
-    .story {
-      grid-template-columns: 1fr;
-    }
   }
 </style>

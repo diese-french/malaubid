@@ -7,96 +7,92 @@ import HeroPlaceholder from './HeroPlaceholder.astro';
 
 interface Props {
   recipe: RecipeEntry;
+  eager?: boolean;
 }
 
-const { recipe } = Astro.props;
+const { recipe, eager = false } = Astro.props;
 ---
 
 <article class="card" data-recipe-card>
-  <a
-    class="image-link"
-    href={`/recettes/${recipe.id}/`}
-    tabindex="-1"
-    aria-hidden="true"
-  >
-    {
-      recipe.data.hero ? (
-        <Image src={recipe.data.hero.src} alt="" loading="lazy" />
-      ) : (
-        <HeroPlaceholder compact />
-      )
-    }
+  <a class="card-link" href={`/recettes/${recipe.id}/`}>
+    <span class="visual" aria-hidden="true">
+      {
+        recipe.data.hero ? (
+          <Image
+            src={recipe.data.hero.src}
+            alt=""
+            width={640}
+            loading={eager ? 'eager' : 'lazy'}
+          />
+        ) : (
+          <HeroPlaceholder compact />
+        )
+      }
+    </span>
+    <h2 data-recipe-title>{recipe.data.title}</h2>
+    <span class="visually-hidden">
+      {getCategoryLabel(recipe.data.category)}. {recipe.data.description}
+    </span>
   </a>
-  <div class="content">
-    <p class="category">{getCategoryLabel(recipe.data.category)}</p>
-    <h2 data-recipe-title>
-      <a href={`/recettes/${recipe.id}/`}>{recipe.data.title}</a>
-    </h2>
-    <p>{recipe.data.description}</p>
-  </div>
 </article>
 
 <style>
   .card {
+    position: relative;
     overflow: hidden;
-    border: 1px solid var(--color-line);
-    border-radius: var(--radius-medium);
-    background: var(--color-surface);
-    box-shadow: 0 0.7rem 2rem rgb(74 48 33 / 8%);
-    transition:
-      transform 180ms ease,
-      box-shadow 180ms ease;
+    aspect-ratio: 2 / 1;
+    background: var(--color-accent);
   }
 
-  .card:hover {
-    box-shadow: var(--shadow-soft);
-    transform: translateY(-0.25rem);
-  }
-
-  .image-link {
+  .card-link {
+    position: absolute;
+    inset: 0;
     display: block;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    background: #eadbca;
-  }
-
-  .image-link :global(img) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 300ms ease;
-  }
-
-  .card:hover .image-link :global(img) {
-    transform: scale(1.025);
-  }
-
-  .content {
-    padding: 1.25rem 1.35rem 1.5rem;
-  }
-
-  .category {
-    margin: 0 0 0.4rem;
-    color: var(--color-herb);
-    font-size: 0.73rem;
-    font-weight: 850;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  h2 {
-    margin: 0;
-    font-size: clamp(1.45rem, 2.7vw, 2rem);
-  }
-
-  h2 a {
-    color: var(--color-ink);
+    color: white;
     text-decoration: none;
   }
 
-  .content > p:last-child {
-    margin: 0.75rem 0 0;
-    color: var(--color-muted);
-    line-height: 1.5;
+  .visual {
+    position: absolute;
+    inset: 0;
+    transition: opacity 180ms ease;
+  }
+
+  .visual::after {
+    position: absolute;
+    inset: 45% 0 0;
+    background: linear-gradient(transparent, rgb(0 0 0 / 42%));
+    content: '';
+  }
+
+  .visual :global(img),
+  .visual :global([data-hero-placeholder]) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-link:hover,
+  .card-link:focus-visible {
+    color: white;
+  }
+
+  .card-link:hover .visual,
+  .card-link:focus-visible .visual {
+    opacity: 0.22;
+  }
+
+  h2 {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 1rem;
+    color: white;
+    font-size: clamp(1.25rem, 2.1vw, 2rem);
+    line-height: 1.05;
+    text-shadow: 0 1px 0.25rem rgb(0 0 0 / 45%);
   }
 </style>

@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroPlaceholder from '../components/HeroPlaceholder.astro';
 ---
 
 <BaseLayout
@@ -8,53 +7,19 @@ import HeroPlaceholder from '../components/HeroPlaceholder.astro';
   description="Cette page n’existe pas ou a été déplacée."
 >
   <section class="not-found shell">
-    <div>
-      <p class="eyebrow">Erreur 404</p>
-      <h1>Cette recette<br />s’est échappée.</h1>
-      <p class="lede">
-        La page demandée n’existe pas ou a été déplacée. Le carnet complet vous
-        attend à l’accueil.
-      </p>
-      <a class="button" href="/">Retour aux recettes</a>
-    </div>
-    <div class="visual surface">
-      <HeroPlaceholder />
-    </div>
+    <h1>Page introuvable</h1>
+    <p>Cette page n’existe pas ou a été déplacée.</p>
+    <p><a href="/">Retour aux recettes</a></p>
   </section>
 </BaseLayout>
 
 <style>
   .not-found {
-    display: grid;
-    min-height: 70vh;
-    align-items: center;
-    gap: clamp(2rem, 7vw, 6rem);
-    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.7fr);
-    padding-block: 4rem;
+    max-width: 40rem;
+    padding-block: 6rem;
   }
 
   h1 {
-    margin-block: 0 1.5rem;
-  }
-
-  .button {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.75rem 1.1rem;
-    border-radius: var(--radius-small);
-    background: var(--color-accent);
-    color: white;
-    font-weight: 800;
-    text-decoration: none;
-  }
-
-  .visual {
-    overflow: hidden;
-  }
-
-  @media (max-width: 48rem) {
-    .not-found {
-      grid-template-columns: 1fr;
-    }
+    margin-top: 0;
   }
 </style>

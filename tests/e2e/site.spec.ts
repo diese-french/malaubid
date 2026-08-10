@@ -14,9 +14,10 @@ test('home lists only public recipes in French alphabetical order', async ({
   expect(titles).toEqual(expected);
   expect(titles).not.toContain('Sauce au yaourt');
   expect(titles).not.toContain('Shortbread');
+  await expect(page.getByText(/À table|prêtes à cuisiner/i)).toHaveCount(0);
 });
 
-test('simple recipe renders metadata, equipment, ingredients, steps, and notes', async ({
+test('simple recipe renders metadata, equipment, ingredients, and steps without duplicating its introduction', async ({
   page,
 }) => {
   await page.goto('/recettes/tarte-tatin/');
@@ -33,8 +34,11 @@ test('simple recipe renders metadata, equipment, ingredients, steps, and notes',
     page.getByRole('heading', { level: 2, name: 'Préparation' }),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', { level: 2, name: 'Notes' }),
-  ).toBeVisible();
+    page.getByText(
+      'Avec des demis pommes la tarte est bien épaisse. La crème fraîche apporte un vrai plus.',
+      { exact: true },
+    ),
+  ).toHaveCount(1);
   await expect(page.locator('time[datetime="PT1H30M"]')).toHaveText(
     '1 h 30 min',
   );

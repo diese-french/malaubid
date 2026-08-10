@@ -30,53 +30,59 @@ const { resolved, component = false } = Astro.props;
               ingredient.scalable && effectiveAmount.type !== 'qualitative';
             return (
               <li data-ingredient-name={ingredient.name}>
-                <span class="amount-wrap">
-                  {ingredient.approximate && <span>environ </span>}
-                  <span
-                    class="amount"
-                    data-base-amount={
-                      scalable ? JSON.stringify(effectiveAmount) : undefined
-                    }
-                  >
-                    {formatAmount(effectiveAmount)}
-                  </span>
-                </span>{' '}
-                <span class="name">{ingredient.name}</span>
-                {ingredient.note && (
-                  <span class="note"> — {ingredient.note}</span>
-                )}
-                {ingredient.optional && (
-                  <span class="optional"> facultatif</span>
-                )}
-                {ingredient.alternatives?.map((alternative) => {
-                  const alternativeAmount = scaleAmount(
-                    alternative.amount,
-                    resolved.factor,
-                    ingredient.scalable,
-                  );
-                  const alternativeScales =
-                    ingredient.scalable &&
-                    alternativeAmount.type !== 'qualitative';
-                  return (
-                    <span class="alternative">
-                      ou{' '}
-                      <span
-                        class="amount"
-                        data-base-amount={
-                          alternativeScales
-                            ? JSON.stringify(alternativeAmount)
-                            : undefined
-                        }
-                      >
-                        {formatAmount(alternativeAmount)}
-                      </span>{' '}
-                      {alternative.name}
-                      {alternative.note && (
-                        <span class="note"> — {alternative.note}</span>
-                      )}
+                <input
+                  type="checkbox"
+                  aria-label={`Marquer ${ingredient.name} comme utilisé`}
+                />
+                <span class="ingredient-copy">
+                  <span class="amount-wrap">
+                    {ingredient.approximate && <span>environ </span>}
+                    <span
+                      class="amount"
+                      data-base-amount={
+                        scalable ? JSON.stringify(effectiveAmount) : undefined
+                      }
+                    >
+                      {formatAmount(effectiveAmount)}
                     </span>
-                  );
-                })}
+                  </span>{' '}
+                  <span class="name">{ingredient.name}</span>
+                  {ingredient.note && (
+                    <span class="note"> — {ingredient.note}</span>
+                  )}
+                  {ingredient.optional && (
+                    <span class="optional"> (facultatif)</span>
+                  )}
+                  {ingredient.alternatives?.map((alternative) => {
+                    const alternativeAmount = scaleAmount(
+                      alternative.amount,
+                      resolved.factor,
+                      ingredient.scalable,
+                    );
+                    const alternativeScales =
+                      ingredient.scalable &&
+                      alternativeAmount.type !== 'qualitative';
+                    return (
+                      <span class="alternative">
+                        ou{' '}
+                        <span
+                          class="amount"
+                          data-base-amount={
+                            alternativeScales
+                              ? JSON.stringify(alternativeAmount)
+                              : undefined
+                          }
+                        >
+                          {formatAmount(alternativeAmount)}
+                        </span>{' '}
+                        {alternative.name}
+                        {alternative.note && (
+                          <span class="note"> — {alternative.note}</span>
+                        )}
+                      </span>
+                    );
+                  })}
+                </span>
               </li>
             );
           })}
@@ -88,25 +94,19 @@ const { resolved, component = false } = Astro.props;
 
 <style>
   .ingredients > h2 {
-    margin: 0 0 1.25rem;
-  }
-
-  .ingredients.component > h2 {
-    font-size: clamp(1.55rem, 3vw, 2.15rem);
+    margin: 0 0 1rem;
+    color: var(--color-accent);
+    font-size: 1rem;
   }
 
   .group + .group {
-    margin-top: 1.75rem;
+    margin-top: 1.5rem;
   }
 
   h3 {
-    margin: 0 0 0.65rem;
-    color: var(--color-herb);
-    font-family: var(--font-body);
-    font-size: 0.8rem;
-    font-weight: 850;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+    color: var(--color-accent);
+    font-size: 1rem;
   }
 
   ul {
@@ -116,9 +116,18 @@ const { resolved, component = false } = Astro.props;
   }
 
   li {
-    padding-block: 0.65rem;
-    border-bottom: 1px solid rgb(223 212 199 / 72%);
-    line-height: 1.4;
+    display: grid;
+    align-items: start;
+    gap: 0.55rem;
+    grid-template-columns: auto minmax(0, 1fr);
+    padding-block: 0.35rem;
+    line-height: 1.35;
+  }
+
+  input {
+    width: 0.9rem;
+    height: 0.9rem;
+    margin: 0.2rem 0 0;
   }
 
   .amount-wrap,
@@ -128,7 +137,7 @@ const { resolved, component = false } = Astro.props;
   }
 
   .name {
-    font-weight: 600;
+    font-weight: 400;
   }
 
   .note,
@@ -144,14 +153,7 @@ const { resolved, component = false } = Astro.props;
   }
 
   .optional {
-    display: inline-block;
-    margin-left: 0.4rem;
-    padding: 0.08rem 0.45rem;
-    border-radius: 10rem;
-    background: #edf3eb;
-    color: var(--color-herb);
-    font-size: 0.72rem;
-    font-weight: 800;
-    text-transform: uppercase;
+    color: var(--color-muted);
+    font-size: 0.92em;
   }
 </style>

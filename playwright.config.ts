@@ -17,7 +17,7 @@ export default defineConfig({
   webServer: {
     command: 'tsx scripts/preview-for-tests.ts',
     url: 'http://127.0.0.1:4321/',
-    reuseExistingServer: false,
+    reuseExistingServer: !process.env.CI,
     timeout: 120_000,
   },
 });

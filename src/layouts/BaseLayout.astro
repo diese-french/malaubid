@@ -1,4 +1,5 @@
 ---
+import BrandMark from '../components/BrandMark.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -25,9 +26,15 @@ const canonicalUrl = new URL(canonicalPath, Astro.site);
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#fffdf8" />
+    <meta name="theme-color" content="#3d9970" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
@@ -40,26 +47,17 @@ const canonicalUrl = new URL(canonicalPath, Astro.site);
   <body>
     <a class="skip-link" href="#contenu">Aller au contenu</a>
     <header class="site-header">
-      <div class="shell header-inner">
-        <a class="brand" href="/" aria-label="Malaubid, accueil">
-          <span class="brand-mark" aria-hidden="true">M</span>
-          <span>Malaubid</span>
-        </a>
-        <nav aria-label="Navigation principale">
-          <a href="/">Recettes</a>
-          <a href="/a-propos/">À propos</a>
-        </nav>
-      </div>
+      <a class="brand" href="/" aria-label="Malaubid, accueil">
+        <BrandMark />
+      </a>
     </header>
     <main id="contenu">
       <slot />
     </main>
     <footer class="site-footer">
       <div class="shell footer-inner">
-        <p>
-          <strong>Malaubid</strong> — des recettes écrites pour être cuisinées.
-        </p>
-        <a href="/a-propos/">À propos du site</a>
+        <a href="/">Recettes</a>
+        <a href="/a-propos/">À propos</a>
       </div>
     </footer>
   </body>
@@ -70,11 +68,10 @@ const canonicalUrl = new URL(canonicalPath, Astro.site);
     position: fixed;
     z-index: 100;
     top: 0.75rem;
-    left: 0.75rem;
-    padding: 0.7rem 1rem;
-    border-radius: var(--radius-small);
-    background: var(--color-ink);
-    color: white;
+    left: 4.5rem;
+    padding: 0.6rem 0.8rem;
+    background: white;
+    color: var(--color-ink);
     transform: translateY(-180%);
   }
 
@@ -83,84 +80,53 @@ const canonicalUrl = new URL(canonicalPath, Astro.site);
   }
 
   .site-header {
-    position: relative;
-    z-index: 2;
-    border-bottom: 1px solid rgb(112 100 93 / 18%);
-    background: rgb(255 253 248 / 88%);
-    backdrop-filter: blur(1rem);
-  }
-
-  .header-inner,
-  .footer-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-  }
-
-  .header-inner {
-    min-height: 5rem;
+    height: 0;
   }
 
   .brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.7rem;
-    color: var(--color-ink);
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  .brand-mark {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
     display: grid;
-    width: 2.4rem;
-    aspect-ratio: 1;
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0.5rem;
     place-items: center;
-    border-radius: 50% 50% 45% 45%;
     background: var(--color-accent);
     color: white;
-    font-size: 1.1rem;
   }
 
-  nav {
-    display: flex;
-    gap: clamp(0.9rem, 3vw, 2rem);
+  .brand:hover {
+    background: var(--color-accent-dark);
+    color: white;
   }
 
-  nav a {
-    color: var(--color-ink);
-    font-size: 0.95rem;
-    font-weight: 750;
-    text-decoration: none;
+  .brand :global(svg) {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   .site-footer {
-    margin-top: 6rem;
-    padding-block: 2.5rem;
-    border-top: 1px solid var(--color-line);
-    color: var(--color-muted);
+    margin-top: 4rem;
+    padding-block: 3rem;
+    background: rgb(0 0 0 / 6.25%);
   }
 
-  .site-footer p {
-    margin: 0;
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
   }
 
-  @media (max-width: 36rem) {
-    .header-inner,
+  .footer-inner a {
+    color: var(--color-ink);
+  }
+
+  @media (max-width: 32rem) {
     .footer-inner {
-      align-items: flex-start;
+      align-items: center;
       flex-direction: column;
-    }
-
-    .header-inner {
-      padding-block: 1rem;
-    }
-
-    nav {
-      width: 100%;
-      justify-content: space-between;
+      gap: 0.75rem;
     }
   }
 </style>

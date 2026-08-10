@@ -45,23 +45,12 @@ function flattenTree(node: ResolvedRecipe): ResolvedRecipe[] {
   return [node, ...node.components.flatMap(flattenTree)];
 }
 
-const resolvedEntries = await Promise.all(
-  flattenTree(tree).map(async (resolved) => {
-    const contentEntry = entries.find(({ id }) => id === resolved.recipe.id);
-    if (!contentEntry) {
-      throw new Error(
-        `Missing content entry for resolved recipe "${resolved.recipe.id}".`,
-      );
-    }
-    const { Content } = await render(contentEntry);
-    return { resolved, Content, hasBody: Boolean(contentEntry.body?.trim()) };
-  }),
+const { Content: RootContent } = await render(entry);
+const rootBody = entry.body?.trim();
+const rootHasBody = Boolean(
+  rootBody && rootBody !== entry.data.description?.trim(),
 );
-const rootContent = resolvedEntries[0];
-if (!rootContent)
-  throw new Error(`Recipe "${entry.id}" did not resolve to a root entry.`);
-const RootContent = rootContent.Content;
-const componentContents = resolvedEntries.slice(1);
+const componentContents = flattenTree(tree).slice(1);
 const canonicalPath = `/recettes/${entry.id}/`;
 const canonicalUrl = new URL(canonicalPath, Astro.site).href;
 const heroUrl = entry.data.hero
@@ -99,21 +88,6 @@ const durations = [
     data-base-yield={entry.data.yield.quantity}
   >
     <header class="recipe-header shell">
-      <div class="title-block">
-        {
-          entry.data.visibility === 'draft' && (
-            <p class="draft-banner">
-              Brouillon · visible uniquement en développement
-            </p>
-          )
-        }
-        <p class="eyebrow">{getCategoryLabel(entry.data.category)}</p>
-        <h1>{entry.data.title}</h1>
-        {entry.data.description && <p class="lede">{entry.data.description}</p>}
-        <p class="author">
-          Une recette de <strong>{entry.data.author}</strong>
-        </p>
-      </div>
       <figure class="hero-media">
         {
           entry.data.hero ? (
@@ -138,42 +112,21 @@ const durations = [
           )
         }
       </figure>
-    </header>
-
-    <div class="recipe-content shell">
-      <section class="scaler surface" aria-labelledby="yield-title">
-        <div>
-          <p class="eyebrow">Adapter la recette</p>
-          <h2 id="yield-title">Pour combien&nbsp;?</h2>
-          <p>
-            Base : {
-              formatYield(entry.data.yield.quantity, entry.data.yield.label)
-            }
-          </p>
-        </div>
-        <div class="yield-control">
-          <label for="target-yield">Quantité souhaitée</label>
-          <div class="input-row">
-            <input
-              id="target-yield"
-              data-yield-input
-              data-yield-label={entry.data.yield.label}
-              type="number"
-              min="0.01"
-              step="0.5"
-              inputmode="decimal"
-              value={entry.data.yield.quantity}
-            />
-            <span>{entry.data.yield.label}</span>
-          </div>
-          <button type="button" data-yield-reset
-            >Revenir à la recette d’origine</button
-          >
-          <p class="status" data-yield-status aria-live="polite"></p>
-        </div>
-      </section>
-
-      <dl class="metadata" aria-label="Informations sur la recette">
+      <div class="title-block">
+        {
+          entry.data.visibility === 'draft' && (
+            <p class="draft-banner">
+              Brouillon · visible uniquement en développement
+            </p>
+          )
+        }
+        <h1>{entry.data.title}</h1>
+        {entry.data.description && <p class="lede">{entry.data.description}</p>}
+        <p class="byline">
+          {getCategoryLabel(entry.data.category)} · {entry.data.author}
+        </p>
+      </div>
+      <dl class="metadata" aria-label="Durées">
         {
           durations.map(([label, minutes]) =>
             minutes !== undefined ? (
@@ -189,10 +142,56 @@ const durations = [
           )
         }
       </dl>
+    </header>
 
+    <div class="recipe-content shell">
       <div class="recipe-grid">
         <aside>
-          <IngredientList resolved={tree} />
+          {
+            tree.components.length > 0 && (
+              <section class="component-summary">
+                <h2>Étapes</h2>
+                <ul>
+                  {tree.components.map((component) => (
+                    <li>{component.recipe.data.title}</li>
+                  ))}
+                </ul>
+              </section>
+            )
+          }
+          <section class="scaler" aria-labelledby="yield-title">
+            <h2 id="yield-title">Quantités</h2>
+            <div class="yield-control">
+              <label class="visually-hidden" for="target-yield">
+                Quantité souhaitée
+              </label>
+              <div class="input-row">
+                <input
+                  id="target-yield"
+                  data-yield-input
+                  data-yield-label={entry.data.yield.label}
+                  type="number"
+                  min="0.01"
+                  step="0.5"
+                  inputmode="decimal"
+                  value={entry.data.yield.quantity}
+                />
+                <span>{entry.data.yield.label}</span>
+              </div>
+              <p class="base-yield">
+                Base&nbsp;: {
+                  formatYield(entry.data.yield.quantity, entry.data.yield.label)
+                }
+              </p>
+              <button type="button" data-yield-reset>Réinitialiser</button>
+              <p class="status" data-yield-status aria-live="polite"></p>
+            </div>
+          </section>
+          {
+            entry.data.ingredientGroups.length > 0 && (
+              <IngredientList resolved={tree} />
+            )
+          }
           {
             entry.data.equipment && entry.data.equipment.length > 0 && (
               <section class="equipment">
@@ -214,8 +213,8 @@ const durations = [
         <div>
           <InstructionList resolved={tree} />
           {
-            rootContent.hasBody && (
-              <section class="notes surface">
+            rootHasBody && (
+              <section class="notes">
                 <h2>Notes</h2>
                 <div class="prose">
                   <RootContent />
@@ -228,34 +227,32 @@ const durations = [
 
       {
         componentContents.length > 0 && (
-          <section class="components" aria-labelledby="components-title">
-            <p class="eyebrow">Préparations liées</p>
-            <h2 id="components-title">À préparer aussi</h2>
-            <div class="component-stack">
-              {componentContents.map(({ resolved, Content, hasBody }) => (
-                <article
-                  class="component surface"
-                  data-component-id={resolved.recipe.id}
-                >
-                  <header>
-                    <p class="component-factor">
-                      Facteur de base · {resolved.factor}
-                    </p>
-                    <h3>{resolved.recipe.data.title}</h3>
-                  </header>
-                  <div class="component-grid">
-                    <IngredientList resolved={resolved} component />
-                    <InstructionList resolved={resolved} component />
-                  </div>
-                  {hasBody && (
-                    <div class="component-notes prose">
-                      <Content />
-                    </div>
-                  )}
-                </article>
-              ))}
+          <>
+            <div class="component-divider" aria-hidden="true">
+              ↓ Recette par étapes ↓
             </div>
-          </section>
+            <section class="components" aria-labelledby="components-title">
+              <h2 class="visually-hidden" id="components-title">
+                Recette par étapes
+              </h2>
+              <div class="component-stack">
+                {componentContents.map((resolved) => (
+                  <article
+                    class="component"
+                    data-component-id={resolved.recipe.id}
+                  >
+                    <header>
+                      <h3>{resolved.recipe.data.title}</h3>
+                    </header>
+                    <div class="component-grid">
+                      <IngredientList resolved={resolved} component />
+                      <InstructionList resolved={resolved} component />
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </>
         )
       }
     </div>
@@ -268,180 +265,158 @@ const durations = [
 
 <style>
   .recipe-header {
-    display: grid;
-    align-items: center;
-    gap: clamp(2rem, 6vw, 5rem);
-    grid-template-columns: minmax(0, 0.85fr) minmax(20rem, 1.15fr);
-    padding-block: clamp(3rem, 8vw, 7rem);
+    padding-top: 0.75rem;
+  }
+
+  .title-block {
+    max-width: 42rem;
+    margin: 2rem auto 0;
+    text-align: center;
   }
 
   .title-block h1 {
-    margin-block: 0 1.25rem;
-  }
-
-  .author {
-    margin-top: 1.5rem;
-    color: var(--color-muted);
+    margin-block: 0 1rem;
   }
 
   .draft-banner {
     padding: 0.6rem 0.8rem;
-    border-radius: var(--radius-small);
     background: #fff0b8;
     color: #624b00;
-    font-weight: 750;
+    font-weight: 700;
   }
 
   .hero-media {
-    overflow: hidden;
     margin: 0;
-    border-radius: var(--radius-large);
-    background: #eadbca;
-    box-shadow: var(--shadow-soft);
+    background: var(--color-accent);
   }
 
   .hero-media :global(img) {
     width: 100%;
-    max-height: 42rem;
-    object-fit: cover;
+    height: auto;
   }
 
   .hero-media figcaption {
-    padding: 0.6rem 1rem;
-    background: white;
+    padding-top: 0.35rem;
     color: var(--color-muted);
-    font-size: 0.78rem;
+    font-size: 0.8rem;
+    text-align: right;
   }
 
-  .recipe-content {
-    display: grid;
-    gap: clamp(3rem, 7vw, 6rem);
+  .lede {
+    margin-inline: auto;
   }
 
-  .scaler {
-    display: grid;
-    align-items: center;
-    gap: 2rem;
-    grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.8fr);
-    padding: clamp(1.5rem, 4vw, 2.5rem);
-  }
-
-  .scaler h2,
-  .scaler p {
-    margin-block: 0;
-  }
-
-  .scaler > div:first-child > p:last-child {
-    margin-top: 0.6rem;
+  .byline {
+    margin-bottom: 0;
     color: var(--color-muted);
-  }
-
-  .yield-control label {
-    display: block;
-    margin-bottom: 0.45rem;
-    font-size: 0.82rem;
-    font-weight: 800;
-  }
-
-  .input-row {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-  }
-
-  input {
-    width: min(9rem, 45vw);
-    padding: 0.65rem 0.8rem;
-    border: 2px solid var(--color-line);
-    border-radius: var(--radius-small);
-    background: white;
-    color: var(--color-ink);
-    font-size: 1.2rem;
-    font-weight: 800;
-  }
-
-  input[aria-invalid='true'] {
-    border-color: var(--color-accent);
-  }
-
-  button {
-    padding: 0;
-    border: 0;
-    margin-top: 0.75rem;
-    background: transparent;
-    color: var(--color-accent-dark);
-    cursor: pointer;
-    font-size: 0.84rem;
-    font-weight: 800;
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-  }
-
-  .status {
-    min-height: 1.3em;
-    margin: 0.35rem 0 0;
-    color: var(--color-muted);
-    font-size: 0.78rem;
+    font-size: 0.9rem;
   }
 
   .metadata {
-    display: grid;
-    gap: 1px;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    overflow: hidden;
-    padding: 1px;
-    margin: 0;
-    border-radius: var(--radius-medium);
-    background: var(--color-line);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-line);
+    margin: 1.5rem auto 0;
   }
 
   .metadata div {
-    padding: 1rem;
-    background: var(--color-paper);
+    display: flex;
+    gap: 0.35rem;
   }
 
   .metadata dt {
     color: var(--color-muted);
-    font-size: 0.72rem;
-    font-weight: 850;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
+  }
+
+  .metadata dt::after {
+    content: '\00a0:';
   }
 
   .metadata dd {
-    margin: 0.25rem 0 0;
-    font-family: var(--font-display);
-    font-size: 1.35rem;
-    font-weight: 700;
+    margin: 0;
+  }
+
+  .recipe-content {
+    margin-top: 3rem;
   }
 
   .recipe-grid {
     display: grid;
     align-items: start;
-    gap: clamp(3rem, 8vw, 8rem);
-    grid-template-columns: minmax(16rem, 0.75fr) minmax(0, 1.25fr);
+    gap: 4rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .equipment {
-    margin-top: 3rem;
+  .component-summary,
+  .scaler {
+    margin-bottom: 1.5rem;
   }
 
-  .equipment h2 {
-    font-size: 1.8rem;
+  .component-summary h2,
+  .scaler h2,
+  .equipment h2,
+  .notes h2 {
+    margin: 0 0 0.75rem;
+    color: var(--color-accent);
+    font-size: 1rem;
   }
 
+  .component-summary ul,
   .equipment ul {
     padding-left: 1.2rem;
+    margin-block: 0;
   }
 
+  .input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .input-row input {
+    width: 4.5rem;
+    height: 2.25rem;
+    padding: 0.4rem 0.5rem;
+    border: 1px solid #aaa;
+    background: white;
+    color: var(--color-ink);
+    font-weight: 700;
+  }
+
+  .input-row input[aria-invalid='true'] {
+    border-color: #c00;
+  }
+
+  .base-yield {
+    margin: 0.35rem 0 0;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+  }
+
+  button {
+    padding: 0;
+    border: 0;
+    margin-top: 0.35rem;
+    background: transparent;
+    color: var(--color-accent-dark);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  .status {
+    min-height: 1.3em;
+    margin: 0.25rem 0 0;
+    color: var(--color-muted);
+    font-size: 0.8rem;
+  }
+
+  .equipment,
   .notes {
-    margin-top: 3rem;
-    padding: clamp(1.25rem, 3vw, 2rem);
-  }
-
-  .notes h2 {
-    margin-top: 0;
-    font-size: 1.7rem;
+    margin-top: 2rem;
   }
 
   .prose :global(p:first-child) {
@@ -452,76 +427,46 @@ const durations = [
     margin-bottom: 0;
   }
 
-  .components {
-    padding-top: 1rem;
-  }
-
-  .components > h2 {
-    margin-top: 0;
+  .component-divider {
+    padding: 0.8rem;
+    margin-block: 3rem;
+    background: rgb(0 0 0 / 12.5%);
+    text-align: center;
   }
 
   .component-stack {
     display: grid;
-    gap: 2rem;
-  }
-
-  .component {
-    padding: clamp(1.4rem, 4vw, 3rem);
-  }
-
-  .component > header {
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--color-line);
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
   }
 
   .component h3 {
-    margin: 0;
-    font-size: clamp(2rem, 4vw, 3.25rem);
-  }
-
-  .component-factor {
-    margin: 0 0 0.3rem;
-    color: var(--color-herb);
-    font-size: 0.72rem;
-    font-weight: 850;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
+    margin: 0 0 1.5rem;
+    color: var(--color-accent);
+    font-size: 1rem;
+    text-align: center;
   }
 
   .component-grid {
     display: grid;
-    gap: clamp(2rem, 7vw, 6rem);
-    grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr);
-    padding-top: 2rem;
+    gap: 2rem;
   }
 
-  .component-notes {
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--color-line);
-    margin-top: 2rem;
-    color: var(--color-muted);
-  }
-
-  @media (max-width: 52rem) {
-    .recipe-header,
-    .scaler,
-    .recipe-grid,
-    .component-grid {
+  @media (max-width: 40rem) {
+    .recipe-grid {
       grid-template-columns: 1fr;
     }
 
-    .metadata {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .title-block {
+      margin-top: 1.5rem;
     }
 
-    .hero-media {
-      order: -1;
+    .recipe-content {
+      margin-top: 2rem;
     }
-  }
 
-  @media (max-width: 32rem) {
-    .metadata {
-      grid-template-columns: 1fr;
+    .recipe-grid {
+      gap: 2.5rem;
     }
   }
 </style>
