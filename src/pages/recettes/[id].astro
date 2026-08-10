@@ -112,36 +112,42 @@ const durations = [
           )
         }
       </figure>
-      <div class="title-block">
-        {
-          entry.data.visibility === 'draft' && (
-            <p class="draft-banner">
-              Brouillon · visible uniquement en développement
-            </p>
-          )
-        }
-        <h1>{entry.data.title}</h1>
-        {entry.data.description && <p class="lede">{entry.data.description}</p>}
-        <p class="byline">
-          {getCategoryLabel(entry.data.category)} · {entry.data.author}
-        </p>
+      <div class="recipe-summary">
+        <div class="title-block">
+          {
+            entry.data.visibility === 'draft' && (
+              <p class="draft-banner">
+                Brouillon · visible uniquement en développement
+              </p>
+            )
+          }
+          <h1>{entry.data.title}</h1>
+          {
+            entry.data.description && (
+              <p class="lede">{entry.data.description}</p>
+            )
+          }
+          <p class="byline">
+            {getCategoryLabel(entry.data.category)} · {entry.data.author}
+          </p>
+        </div>
+        <dl class="metadata" aria-label="Durées">
+          {
+            durations.map(([label, minutes]) =>
+              minutes !== undefined ? (
+                <div>
+                  <dt>{label}</dt>
+                  <dd>
+                    <time datetime={durationToIso(minutes)}>
+                      {formatDuration(minutes)}
+                    </time>
+                  </dd>
+                </div>
+              ) : null,
+            )
+          }
+        </dl>
       </div>
-      <dl class="metadata" aria-label="Durées">
-        {
-          durations.map(([label, minutes]) =>
-            minutes !== undefined ? (
-              <div>
-                <dt>{label}</dt>
-                <dd>
-                  <time datetime={durationToIso(minutes)}>
-                    {formatDuration(minutes)}
-                  </time>
-                </dd>
-              </div>
-            ) : null,
-          )
-        }
-      </dl>
     </header>
 
     <div class="recipe-content shell">
@@ -265,13 +271,15 @@ const durations = [
 
 <style>
   .recipe-header {
-    padding-top: 0.75rem;
+    display: grid;
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 4rem);
+    grid-template-columns: minmax(16rem, 0.85fr) minmax(0, 1.15fr);
+    padding-top: 2rem;
   }
 
   .title-block {
-    max-width: 42rem;
-    margin: 2rem auto 0;
-    text-align: center;
+    margin: 0;
   }
 
   .title-block h1 {
@@ -286,16 +294,21 @@ const durations = [
   }
 
   .hero-media {
+    display: grid;
     margin: 0;
-    background: var(--color-accent);
+    place-items: center;
+    background: var(--color-paper);
   }
 
   .hero-media :global(img) {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: auto;
+    max-height: min(30rem, 55vh);
   }
 
   .hero-media figcaption {
+    width: 100%;
     padding-top: 0.35rem;
     color: var(--color-muted);
     font-size: 0.8rem;
@@ -303,7 +316,7 @@ const durations = [
   }
 
   .lede {
-    margin-inline: auto;
+    max-width: 38rem;
   }
 
   .byline {
@@ -315,11 +328,11 @@ const durations = [
   .metadata {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0.4rem 1.5rem;
     padding-top: 1rem;
     border-top: 1px solid var(--color-line);
-    margin: 1.5rem auto 0;
+    margin: 1.5rem 0 0;
   }
 
   .metadata div {
@@ -452,13 +465,32 @@ const durations = [
     gap: 2rem;
   }
 
+  @media (max-width: 48rem) {
+    .recipe-header {
+      grid-template-columns: 1fr;
+      padding-top: 0.75rem;
+    }
+
+    .title-block {
+      text-align: center;
+    }
+
+    .lede {
+      margin-inline: auto;
+    }
+
+    .metadata {
+      justify-content: center;
+    }
+  }
+
   @media (max-width: 40rem) {
     .recipe-grid {
       grid-template-columns: 1fr;
     }
 
     .title-block {
-      margin-top: 1.5rem;
+      margin-top: 0;
     }
 
     .recipe-content {

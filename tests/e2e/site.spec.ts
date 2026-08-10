@@ -107,6 +107,27 @@ test('missing hero uses the designed placeholder', async ({ page }) => {
   ).toBeVisible();
 });
 
+test('recipe hero image is constrained to the viewport', async ({ page }) => {
+  await page.goto('/recettes/gnocchi/');
+  const hero = page.locator('.hero-media img');
+  await expect(hero).toBeVisible();
+  const box = await hero.boundingBox();
+  const titleBox = await page.getByRole('heading', { level: 1 }).boundingBox();
+  const viewport = page.viewportSize();
+  if (!box || !titleBox || !viewport) {
+    throw new Error('Recipe header dimensions unavailable.');
+  }
+  expect(box.height).toBeLessThanOrEqual(
+    Math.min(30 * 16, viewport.height * 0.55) + 1,
+  );
+  if (viewport.width > 48 * 16) {
+    expect(box.x + box.width).toBeLessThan(titleBox.x);
+    expect(titleBox.y).toBeLessThan(box.y + box.height);
+  } else {
+    expect(titleBox.y).toBeGreaterThanOrEqual(box.y + box.height);
+  }
+});
+
 test('JSON-LD matches visible recipe identity, yield, and ingredient data', async ({
   page,
 }) => {
