@@ -118,4 +118,16 @@ const recipeIndex = createRecipeIndex(entries);
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
+
+  @media (min-width: 90rem) {
+    .recipe-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 112rem) {
+    .recipe-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
 </style>

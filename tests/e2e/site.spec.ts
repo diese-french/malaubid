@@ -54,6 +54,44 @@ test('home search filters recipes without case or accent sensitivity', async ({
   await expect(page.locator('[data-search-status]')).toBeEmpty();
 });
 
+test('home grid adds columns instead of stretching cards on wide screens', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1298, height: 900 });
+  await page.goto('/');
+
+  const grid = page.locator('#recipe-grid');
+  const columnCount = () =>
+    grid.evaluate(
+      (element) =>
+        getComputedStyle(element).gridTemplateColumns.split(' ').length,
+    );
+
+  await expect.poll(columnCount).toBe(3);
+  const standardCardWidth = await page
+    .locator('[data-recipe-card]')
+    .first()
+    .evaluate((element) => element.getBoundingClientRect().width);
+  const standardTitleSize = await page
+    .locator('[data-recipe-title]')
+    .first()
+    .evaluate((element) => getComputedStyle(element).fontSize);
+
+  await page.setViewportSize({ width: 1915, height: 1080 });
+  await expect.poll(columnCount).toBe(5);
+  const wideCardWidth = await page
+    .locator('[data-recipe-card]')
+    .first()
+    .evaluate((element) => element.getBoundingClientRect().width);
+  const wideTitleSize = await page
+    .locator('[data-recipe-title]')
+    .first()
+    .evaluate((element) => getComputedStyle(element).fontSize);
+
+  expect(wideCardWidth).toBeLessThan(standardCardWidth);
+  expect(wideTitleSize).toBe(standardTitleSize);
+});
+
 test('recipe renders metadata, equipment, ingredients, and steps without duplicating its introduction', async ({
   page,
 }) => {
