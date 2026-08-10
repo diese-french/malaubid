@@ -88,6 +88,18 @@ test('invalid target input leaves rendered quantities intact', async ({
   await expect(target).toHaveAttribute('aria-invalid', 'true');
 });
 
+test('yield control advances by half units from the first step', async ({
+  page,
+}) => {
+  await page.goto('/recettes/gnocchi/');
+  const target = page.locator('[data-yield-input]');
+  await expect(target).toHaveValue('4');
+  await target.press('ArrowUp');
+  await expect(target).toHaveValue('4.5');
+  await target.press('ArrowUp');
+  await expect(target).toHaveValue('5');
+});
+
 test('base quantities remain readable without JavaScript', async ({
   browser,
 }) => {
