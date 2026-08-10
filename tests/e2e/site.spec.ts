@@ -235,6 +235,86 @@ test('yield control advances by half units from the first step', async ({
   await expect(target).toHaveValue('5');
 });
 
+test('recipe keeps the screen awake and reacquires the lock when visible again', async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    let requests = 0;
+    let visibility: DocumentVisibilityState = 'visible';
+    let currentLock: WakeLockSentinel | null = null;
+
+    Object.defineProperty(document, 'visibilityState', {
+      configurable: true,
+      get: () => visibility,
+    });
+    Object.defineProperty(navigator, 'wakeLock', {
+      configurable: true,
+      value: {
+        request: async () => {
+          requests += 1;
+          let released = false;
+          const lock = new EventTarget() as WakeLockSentinel;
+          Object.defineProperties(lock, {
+            released: { get: () => released },
+            type: { value: 'screen' },
+          });
+          lock.release = async () => {
+            if (released) return;
+            released = true;
+            lock.dispatchEvent(new Event('release'));
+          };
+          currentLock = lock;
+          return lock;
+        },
+      },
+    });
+    Object.defineProperty(window, 'wakeLockTest', {
+      value: {
+        get requests() {
+          return requests;
+        },
+        setVisibility(nextVisibility: DocumentVisibilityState) {
+          visibility = nextVisibility;
+          if (visibility === 'hidden') void currentLock?.release();
+          document.dispatchEvent(new Event('visibilitychange'));
+        },
+      },
+    });
+  });
+
+  await page.goto('/recettes/gnocchi/');
+  const requestCount = () =>
+    page.evaluate(
+      () =>
+        (
+          window as typeof window & {
+            wakeLockTest: { requests: number };
+          }
+        ).wakeLockTest.requests,
+    );
+
+  await expect.poll(requestCount).toBe(1);
+  await page.evaluate(() => {
+    (
+      window as typeof window & {
+        wakeLockTest: {
+          setVisibility(visibility: DocumentVisibilityState): void;
+        };
+      }
+    ).wakeLockTest.setVisibility('hidden');
+  });
+  await page.evaluate(() => {
+    (
+      window as typeof window & {
+        wakeLockTest: {
+          setVisibility(visibility: DocumentVisibilityState): void;
+        };
+      }
+    ).wakeLockTest.setVisibility('visible');
+  });
+  await expect.poll(requestCount).toBe(2);
+});
+
 test('base quantities remain readable without JavaScript', async ({
   browser,
 }) => {
