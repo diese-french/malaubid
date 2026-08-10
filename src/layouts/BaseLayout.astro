@@ -1,0 +1,166 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string | undefined;
+  image?: string | undefined;
+}
+
+const {
+  title,
+  description,
+  canonicalPath = Astro.url.pathname,
+  image,
+} = Astro.props;
+const pageTitle = title === 'Malaubid' ? title : `${title} — Malaubid`;
+const canonicalUrl = new URL(canonicalPath, Astro.site);
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#fffdf8" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    {image && <meta property="og:image" content={image} />}
+    <title>{pageTitle}</title>
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="/" aria-label="Malaubid, accueil">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span>Malaubid</span>
+        </a>
+        <nav aria-label="Navigation principale">
+          <a href="/">Recettes</a>
+          <a href="/a-propos/">À propos</a>
+        </nav>
+      </div>
+    </header>
+    <main id="contenu">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <p>
+          <strong>Malaubid</strong> — des recettes écrites pour être cuisinées.
+        </p>
+        <a href="/a-propos/">À propos du site</a>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: fixed;
+    z-index: 100;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius-small);
+    background: var(--color-ink);
+    color: white;
+    transform: translateY(-180%);
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  .site-header {
+    position: relative;
+    z-index: 2;
+    border-bottom: 1px solid rgb(112 100 93 / 18%);
+    background: rgb(255 253 248 / 88%);
+    backdrop-filter: blur(1rem);
+  }
+
+  .header-inner,
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .header-inner {
+    min-height: 5rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .brand-mark {
+    display: grid;
+    width: 2.4rem;
+    aspect-ratio: 1;
+    place-items: center;
+    border-radius: 50% 50% 45% 45%;
+    background: var(--color-accent);
+    color: white;
+    font-size: 1.1rem;
+  }
+
+  nav {
+    display: flex;
+    gap: clamp(0.9rem, 3vw, 2rem);
+  }
+
+  nav a {
+    color: var(--color-ink);
+    font-size: 0.95rem;
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .site-footer {
+    margin-top: 6rem;
+    padding-block: 2.5rem;
+    border-top: 1px solid var(--color-line);
+    color: var(--color-muted);
+  }
+
+  .site-footer p {
+    margin: 0;
+  }
+
+  @media (max-width: 36rem) {
+    .header-inner,
+    .footer-inner {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .header-inner {
+      padding-block: 1rem;
+    }
+
+    nav {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+</style>

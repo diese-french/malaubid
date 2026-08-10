@@ -1,0 +1,41 @@
+{
+  "name": "malaubid",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "build": "astro build",
+    "validate:recipes": "tsx scripts/validate-recipes.ts",
+    "validate": "npm run format:check && npm run lint && npm run check && npm run validate:recipes && npm run test && npm run build && npm run test:e2e",
+    "recipe:new": "tsx scripts/new-recipe.ts"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.62.1",
+    "@types/node": "24.13.3",
+    "astro": "7.2.0",
+    "eslint": "10.8.1",
+    "eslint-plugin-astro": "3.1.0",
+    "globals": "17.9.0",
+    "prettier": "3.9.6",
+    "prettier-plugin-astro": "0.14.1",
+    "tsx": "4.23.12",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.66.0",
+    "vitest": "4.1.10",
+    "yaml": "2.9.0"
+  }
+}

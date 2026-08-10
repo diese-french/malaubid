@@ -1,0 +1,7 @@
+.astro
+.netlify
+dist
+node_modules
+package-lock.json
+playwright-report
+test-results

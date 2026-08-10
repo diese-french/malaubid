@@ -1,0 +1,131 @@
+---
+import { Image } from 'astro:assets';
+
+import { formatDuration } from '../lib/recipes/domain';
+import type { ResolvedRecipe } from '../lib/recipes/types';
+
+interface Props {
+  resolved: ResolvedRecipe;
+  component?: boolean;
+}
+
+const { resolved, component = false } = Astro.props;
+let stepNumber = 0;
+---
+
+<section
+  class:list={['instructions', { component }]}
+  data-instruction-source={resolved.recipe.id}
+>
+  <h2>{component ? 'Étapes' : 'Préparation'}</h2>
+  {
+    resolved.recipe.data.instructionSections.map((section) => (
+      <div class="section">
+        {section.title && section.title !== 'Préparation' && (
+          <h3>{section.title}</h3>
+        )}
+        <ol>
+          {section.steps.map((step) => {
+            stepNumber += 1;
+            return (
+              <li>
+                <span class="number" aria-hidden="true">
+                  {String(stepNumber).padStart(2, '0')}
+                </span>
+                <div class="step-content">
+                  <p>{step.text}</p>
+                  {step.timerMinutes !== undefined && (
+                    <span class="timer" data-timer-minutes={step.timerMinutes}>
+                      Durée indicative · {formatDuration(step.timerMinutes)}
+                    </span>
+                  )}
+                  {step.image && (
+                    <figure>
+                      <Image
+                        src={step.image.src}
+                        alt={step.image.alt}
+                        loading="lazy"
+                      />
+                      {step.image.caption && (
+                        <figcaption>{step.image.caption}</figcaption>
+                      )}
+                    </figure>
+                  )}
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    ))
+  }
+</section>
+
+<style>
+  h2 {
+    margin: 0 0 1.25rem;
+  }
+
+  h3 {
+    margin: 2rem 0 1rem;
+    color: var(--color-herb);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 850;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  li {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .number {
+    padding-top: 0.12rem;
+    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  .step-content p {
+    margin: 0;
+  }
+
+  .timer {
+    display: inline-block;
+    margin-top: 0.7rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 10rem;
+    background: #f2e8dc;
+    color: var(--color-accent-dark);
+    font-size: 0.76rem;
+    font-weight: 800;
+  }
+
+  figure {
+    margin: 1.2rem 0 0;
+  }
+
+  figure :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-small);
+  }
+
+  figcaption {
+    margin-top: 0.5rem;
+    color: var(--color-muted);
+    font-size: 0.88rem;
+  }
+</style>

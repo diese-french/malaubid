@@ -1,0 +1,81 @@
+---
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<div
+  class:list={['placeholder', { compact }]}
+  data-hero-placeholder
+  role="img"
+  aria-label="Illustration abstraite d’un plat cuisiné"
+>
+  <span class="steam steam-one" aria-hidden="true"></span>
+  <span class="steam steam-two" aria-hidden="true"></span>
+  <span class="plate" aria-hidden="true"></span>
+</div>
+
+<style>
+  .placeholder {
+    position: relative;
+    display: grid;
+    min-height: 25rem;
+    overflow: hidden;
+    place-items: center;
+    background:
+      radial-gradient(
+        circle at 72% 22%,
+        rgb(255 255 255 / 50%) 0 3rem,
+        transparent 3.1rem
+      ),
+      linear-gradient(145deg, #dd9f6d, #b64d37 55%, #7e392e);
+  }
+
+  .placeholder::after {
+    position: absolute;
+    right: -12%;
+    bottom: -24%;
+    width: 65%;
+    aspect-ratio: 1;
+    border: 1px solid rgb(255 255 255 / 24%);
+    border-radius: 50%;
+    content: '';
+  }
+
+  .compact {
+    min-height: 13rem;
+  }
+
+  .plate {
+    position: absolute;
+    top: 52%;
+    width: 38%;
+    min-width: 7rem;
+    aspect-ratio: 2.4;
+    border: 0.55rem solid rgb(255 253 248 / 88%);
+    border-radius: 50%;
+    box-shadow: 0 1rem 2rem rgb(68 25 17 / 25%);
+  }
+
+  .steam {
+    position: absolute;
+    top: 29%;
+    width: 0.7rem;
+    height: 4.5rem;
+    border-left: 0.18rem solid rgb(255 255 255 / 74%);
+    border-radius: 50%;
+    transform: rotate(12deg);
+  }
+
+  .steam-one {
+    left: 46%;
+  }
+
+  .steam-two {
+    left: 53%;
+    height: 3.5rem;
+    transform: rotate(-10deg);
+  }
+</style>

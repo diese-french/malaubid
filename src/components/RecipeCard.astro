@@ -1,0 +1,102 @@
+---
+import { Image } from 'astro:assets';
+
+import { getCategoryLabel } from '../lib/recipes/categories';
+import type { RecipeEntry } from '../lib/recipes/service';
+import HeroPlaceholder from './HeroPlaceholder.astro';
+
+interface Props {
+  recipe: RecipeEntry;
+}
+
+const { recipe } = Astro.props;
+---
+
+<article class="card" data-recipe-card>
+  <a
+    class="image-link"
+    href={`/recettes/${recipe.id}/`}
+    tabindex="-1"
+    aria-hidden="true"
+  >
+    {
+      recipe.data.hero ? (
+        <Image src={recipe.data.hero.src} alt="" loading="lazy" />
+      ) : (
+        <HeroPlaceholder compact />
+      )
+    }
+  </a>
+  <div class="content">
+    <p class="category">{getCategoryLabel(recipe.data.category)}</p>
+    <h2 data-recipe-title>
+      <a href={`/recettes/${recipe.id}/`}>{recipe.data.title}</a>
+    </h2>
+    <p>{recipe.data.description}</p>
+  </div>
+</article>
+
+<style>
+  .card {
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-medium);
+    background: var(--color-surface);
+    box-shadow: 0 0.7rem 2rem rgb(74 48 33 / 8%);
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-0.25rem);
+  }
+
+  .image-link {
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #eadbca;
+  }
+
+  .image-link :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 300ms ease;
+  }
+
+  .card:hover .image-link :global(img) {
+    transform: scale(1.025);
+  }
+
+  .content {
+    padding: 1.25rem 1.35rem 1.5rem;
+  }
+
+  .category {
+    margin: 0 0 0.4rem;
+    color: var(--color-herb);
+    font-size: 0.73rem;
+    font-weight: 850;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: clamp(1.45rem, 2.7vw, 2rem);
+  }
+
+  h2 a {
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .content > p:last-child {
+    margin: 0.75rem 0 0;
+    color: var(--color-muted);
+    line-height: 1.5;
+  }
+</style>
