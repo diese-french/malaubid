@@ -73,7 +73,9 @@ test('home restores the GitHub button and a discoverable RSS feed', async ({
 
   const response = await page.request.get('/feed.xml');
   expect(response.ok()).toBe(true);
-  expect(response.headers()['content-type']).toContain('application/xml');
+  expect(response.headers()['content-type']).toMatch(
+    /^(?:application|text)\/xml(?:;|$)/u,
+  );
   const feed = await response.text();
   expect(feed.match(/<item>/gu) ?? []).toHaveLength(34);
   expect(feed).toContain('<title>Pâte brisée</title>');
