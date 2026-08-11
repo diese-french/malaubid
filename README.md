@@ -16,6 +16,8 @@ Create a draft recipe with:
 npm run recipe:new -- ma-nouvelle-recette
 ```
 
+Use [Tarte aux poils](src/content/recipes/tarte-aux-poils/index.md) as a concise recipe template.
+
 Run the full local acceptance suite with:
 
 ```sh

@@ -41,7 +41,7 @@ Additional duration anomalies:
 - Baklawa's 120 g of butter is split into the source-prescribed 20 g for the filling and 100 g for the pastry layers. The total remains 120 g.
 - The old gnocchi step link pointed to a generated Jekyll image path. The original image is now colocated as a step image with alt text.
 - `sauce-aubergine-feta` referenced `missing.jpg`, which did not exist. The entry deliberately has no main image and exercises the site placeholder.
-- `tarte-aux-poils.jpg` and `vanilla-custard.jpg` had no recipe entries at migration time and are not copied into the canonical collection.
+- `vanilla-custard.jpg` had no recipe entry at migration time and is not copied into the canonical collection.
 
 ## Instruction rewordings for scaling
 
