@@ -28,4 +28,4 @@ The canonical content format is documented in [`docs/recipe-format.md`](docs/rec
 
 ## Deployment
 
-Astro builds a static site into `dist` with `npm run build`. Netlify uses the committed `netlify.toml` and Node 24. The migration target is `https://new.malau.bid`; the existing `malau.bid` site is outside this branch's cutover scope.
+Astro builds a static site into `dist` with `npm run build`. Netlify uses the committed `netlify.toml` and Node 24. The production site is `https://malau.bid`.

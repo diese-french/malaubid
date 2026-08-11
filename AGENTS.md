@@ -12,7 +12,7 @@
 ## Architecture
 
 - This is a static Astro 7 site. Do not add a deployment adapter or server-rendered routes.
-- Keep `site` set to `https://new.malau.bid` until an explicitly separate production cutover changes it. Do not alter `malau.bid` DNS or deployment from this repository migration.
+- Keep the canonical `site` set to `https://malau.bid`.
 - Store the only canonical recipe representation at `src/content/recipes/<id>/index.md`, with local images beside it.
 - Keep content schema and image validation in `src/content.config.ts`.
 - Keep categories in `src/lib/recipes/categories.ts` and units in `src/lib/recipes/units.ts`; update `docs/recipe-format.md` and tests in the same change when either vocabulary changes.

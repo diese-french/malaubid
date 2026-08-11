@@ -13,7 +13,7 @@ describe('Recipe JSON-LD', () => {
       simpleRecipe,
       new Map([[simpleRecipe.id, simpleRecipe]]),
       {
-        canonicalUrl: 'https://new.malau.bid/recettes/simple/',
+        canonicalUrl: 'https://malau.bid/recettes/simple/',
       },
     );
     expect(json).toMatchObject({
@@ -30,7 +30,7 @@ describe('Recipe JSON-LD', () => {
 
   it('flattens component ingredients and includes component instructions', () => {
     const json = serializeRecipeJsonLd(compositeRecipe, compositeRecipeIndex, {
-      canonicalUrl: 'https://new.malau.bid/recettes/composite/',
+      canonicalUrl: 'https://malau.bid/recettes/composite/',
     });
     expect(json.recipeIngredient).toEqual(['200 g crème', '10 g épices']);
     expect(json.recipeInstructions).toEqual(

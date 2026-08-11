@@ -69,7 +69,7 @@ test('home restores the GitHub button and a discoverable RSS feed', async ({
   ).toHaveAttribute('href', '/feed.xml');
   await expect(
     page.locator('link[rel="alternate"][type="application/rss+xml"]'),
-  ).toHaveAttribute('href', 'https://new.malau.bid/feed.xml');
+  ).toHaveAttribute('href', 'https://malau.bid/feed.xml');
 
   const response = await page.request.get('/feed.xml');
   expect(response.ok()).toBe(true);
