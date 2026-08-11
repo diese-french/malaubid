@@ -4,3 +4,8 @@ dist/
 node_modules/
 playwright-report/
 test-results/
+
+# Local agent tooling
+.agents/
+.codex/
+skills-lock.json
