@@ -381,6 +381,47 @@ test('recipe image is constrained to the viewport', async ({ page }) => {
   }
 });
 
+test('recipe images open full-resolution files in a modal viewer', async ({
+  page,
+}) => {
+  await page.goto('/recettes/gnocchi/');
+
+  const imageButtons = page.locator('[data-full-size-image]');
+  await expect(imageButtons).toHaveCount(2);
+  await expect(imageButtons.first().locator('img')).toHaveAttribute(
+    'src',
+    /(?:\/_astro\/[^?]+\.webp$|[?&]f=webp(?:&|$))/u,
+  );
+
+  await imageButtons.first().click();
+  const dialog = page.getByRole('dialog', { name: 'Image en taille réelle' });
+  await expect(dialog).toBeVisible();
+  await expect
+    .poll(() =>
+      dialog
+        .locator('img')
+        .evaluate((image) => (image as HTMLImageElement).naturalWidth),
+    )
+    .toBeGreaterThan(0);
+  await expect(dialog.locator('img')).toHaveAttribute(
+    'src',
+    /(?:\/_astro\/[^?]+\.jpg$|\/image\.jpg\?)/u,
+  );
+  await expect(dialog.locator('img')).toHaveAttribute(
+    'alt',
+    'Gnocchi prêt à être dégusté',
+  );
+  expect(page.url()).toContain('/recettes/gnocchi/');
+
+  await page.mouse.click(2, 2);
+  await expect(dialog).not.toBeVisible();
+
+  await imageButtons.first().click();
+  await expect(dialog).toBeVisible();
+  await page.getByRole('button', { name: 'Fermer l’image' }).click();
+  await expect(dialog).not.toBeVisible();
+});
+
 test('JSON-LD matches visible recipe identity, yield, and ingredient data', async ({
   page,
 }) => {

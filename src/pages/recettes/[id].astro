@@ -89,12 +89,21 @@ const durations = [
       <figure class="recipe-image">
         {
           entry.data.image ? (
-            <Image
-              src={entry.data.image.src}
-              alt={entry.data.image.alt}
-              loading="eager"
-              fetchpriority="high"
-            />
+            <button
+              type="button"
+              class="full-image-button"
+              data-full-size-image
+              data-full-size-src={entry.data.image.src.src}
+              data-full-size-alt={entry.data.image.alt}
+              aria-label={`Voir l’image de ${entry.data.title} en grand`}
+            >
+              <Image
+                src={entry.data.image.src}
+                alt={entry.data.image.alt}
+                loading="eager"
+                fetchpriority="high"
+              />
+            </button>
           ) : (
             <ImagePlaceholder />
           )
@@ -276,9 +285,28 @@ const durations = [
       }
     </div>
   </article>
+  <dialog
+    class="image-dialog"
+    data-image-dialog
+    closedby="any"
+    aria-label="Image en taille réelle"
+  >
+    <form method="dialog">
+      <button
+        type="submit"
+        class="image-dialog-close"
+        aria-label="Fermer l’image"
+        autofocus
+      >
+        ×
+      </button>
+    </form>
+    <img data-image-dialog-image alt="" />
+  </dialog>
 </BaseLayout>
 
 <script>
+  import '../../scripts/image-viewer';
   import '../../scripts/quantity-scaler';
   import '../../scripts/screen-wake-lock';
 </script>
@@ -319,6 +347,17 @@ const durations = [
     max-width: 100%;
     height: auto;
     max-height: min(30rem, 55vh);
+  }
+
+  .full-image-button {
+    display: grid;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    place-items: center;
+    background: transparent;
+    cursor: zoom-in;
+    text-decoration: none;
   }
 
   .recipe-image figcaption {
@@ -480,6 +519,57 @@ const durations = [
   .component-grid {
     display: grid;
     gap: 2rem;
+  }
+
+  .image-dialog {
+    display: none;
+    width: fit-content;
+    max-width: calc(100vw - 2rem);
+    height: fit-content;
+    max-height: calc(100vh - 2rem);
+    padding: 0;
+    border: 0;
+    overflow: visible;
+    background: #111;
+  }
+
+  .image-dialog[open] {
+    display: block;
+  }
+
+  .image-dialog::backdrop {
+    background: rgb(0 0 0 / 82%);
+  }
+
+  .image-dialog img {
+    display: block;
+    width: auto;
+    max-width: calc(100vw - 2rem);
+    height: auto;
+    max-height: calc(100vh - 2rem);
+    object-fit: contain;
+    box-shadow: 0 0.5rem 2rem rgb(0 0 0 / 45%);
+  }
+
+  .image-dialog-close {
+    position: fixed;
+    z-index: 1;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    margin: 0;
+    place-items: center;
+    background: white;
+    color: var(--color-ink);
+    box-shadow: 0 0.2rem 0.8rem rgb(0 0 0 / 35%);
+    font-size: 2rem;
+    line-height: 1;
+    text-decoration: none;
   }
 
   @media (max-width: 48rem) {

@@ -40,11 +40,20 @@ const { resolved, component = false } = Astro.props;
                   )}
                   {step.image && (
                     <figure>
-                      <Image
-                        src={step.image.src}
-                        alt={step.image.alt}
-                        loading="lazy"
-                      />
+                      <button
+                        type="button"
+                        class="full-image-button"
+                        data-full-size-image
+                        data-full-size-src={step.image.src.src}
+                        data-full-size-alt={step.image.alt}
+                        aria-label="Voir l’image de l’étape en grand"
+                      >
+                        <Image
+                          src={step.image.src}
+                          alt={step.image.alt}
+                          loading="lazy"
+                        />
+                      </button>
                       {step.image.caption && (
                         <figcaption>{step.image.caption}</figcaption>
                       )}
@@ -112,6 +121,16 @@ const { resolved, component = false } = Astro.props;
   figure :global(img) {
     width: 100%;
     height: auto;
+  }
+
+  .full-image-button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    background: transparent;
+    cursor: zoom-in;
   }
 
   figcaption {
