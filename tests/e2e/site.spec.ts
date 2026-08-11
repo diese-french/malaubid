@@ -384,10 +384,30 @@ test('recipe image is constrained to the viewport', async ({ page }) => {
 test('recipe images open full-resolution files in a modal viewer', async ({
   page,
 }) => {
+  await page.goto('/');
+  const homePreviewSrc = await page
+    .locator('a[href="/recettes/gnocchi/"] img')
+    .getAttribute('src');
+  if (!homePreviewSrc) {
+    throw new Error('Gnocchi homepage preview source unavailable.');
+  }
+
   await page.goto('/recettes/gnocchi/');
 
   const imageButtons = page.locator('[data-full-size-image]');
   await expect(imageButtons).toHaveCount(2);
+  await expect(imageButtons.first().locator('img')).toHaveAttribute(
+    'src',
+    homePreviewSrc,
+  );
+  await expect(imageButtons.first().locator('img')).toHaveAttribute(
+    'width',
+    '640',
+  );
+  await expect(imageButtons.nth(1).locator('img')).toHaveAttribute(
+    'width',
+    '640',
+  );
   await expect(imageButtons.first().locator('img')).toHaveAttribute(
     'src',
     /(?:\/_astro\/[^?]+\.webp$|[?&]f=webp(?:&|$))/u,
