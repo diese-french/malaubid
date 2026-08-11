@@ -17,6 +17,7 @@ const {
 } = Astro.props;
 const pageTitle = title === 'Malaubid' ? title : `${title} — Malaubid`;
 const canonicalUrl = new URL(canonicalPath, Astro.site);
+const feedUrl = new URL('/feed.xml', Astro.site);
 ---
 
 <!doctype html>
@@ -28,6 +29,12 @@ const canonicalUrl = new URL(canonicalPath, Astro.site);
     <meta name="description" content={description} />
     <meta name="theme-color" content="#3d9970" />
     <link rel="canonical" href={canonicalUrl} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Malaubid"
+      href={feedUrl}
+    />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -58,6 +65,7 @@ const canonicalUrl = new URL(canonicalPath, Astro.site);
       <div class="shell footer-inner">
         <a href="/">Recettes</a>
         <a href="/a-propos/">À propos</a>
+        <a href="/feed.xml">Subscribe via RSS</a>
       </div>
     </footer>
   </body>

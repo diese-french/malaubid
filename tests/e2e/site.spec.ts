@@ -54,6 +54,32 @@ test('home search filters recipes without case or accent sensitivity', async ({
   await expect(page.locator('[data-search-status]')).toBeEmpty();
 });
 
+test('home restores the GitHub button and a discoverable RSS feed', async ({
+  page,
+}) => {
+  await page.goto('/');
+
+  await expect(
+    page.getByRole('link', { name: 'View on GitHub' }),
+  ).toHaveAttribute('href', 'https://github.com/diese-french/malaubid');
+  await expect(
+    page.getByRole('contentinfo').getByRole('link', {
+      name: 'Subscribe via RSS',
+    }),
+  ).toHaveAttribute('href', '/feed.xml');
+  await expect(
+    page.locator('link[rel="alternate"][type="application/rss+xml"]'),
+  ).toHaveAttribute('href', 'https://new.malau.bid/feed.xml');
+
+  const response = await page.request.get('/feed.xml');
+  expect(response.ok()).toBe(true);
+  expect(response.headers()['content-type']).toContain('application/xml');
+  const feed = await response.text();
+  expect(feed.match(/<item>/gu) ?? []).toHaveLength(34);
+  expect(feed).toContain('<title>Pâte brisée</title>');
+  expect(feed).not.toContain('Tarte aux poils');
+});
+
 test('home grid adds columns instead of stretching cards on wide screens', async ({
   page,
 }) => {
