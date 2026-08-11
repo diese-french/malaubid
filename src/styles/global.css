@@ -27,11 +27,17 @@ html {
 }
 
 body {
+  display: flex;
   min-height: 100vh;
   margin: 0;
+  flex-direction: column;
   background: var(--color-paper);
   font-size: 1rem;
   line-height: 1.5;
+}
+
+main {
+  flex: 1;
 }
 
 img,
