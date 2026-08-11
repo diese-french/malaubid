@@ -55,8 +55,8 @@ instructionSections:
       - Préchauffer le four à 270°C avec un plaque
       - Au rouleau, étaler les boules de pâte sur une épaisseur d’environ 5 mm et les poser directement sur la plaque de cuisson chaude
       - Enfourner, retourner au bout de 2 minutes et laisser cuire encore 2 minutes.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Pain pita prêt à être dégusté
 ---
 

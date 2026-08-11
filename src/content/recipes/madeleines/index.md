@@ -52,8 +52,8 @@ instructionSections:
       - Beurrer et fariner les moules à madeleine
       - Remplir chacun des moules aux 3/4
       - Enfourner à four très chaud préchauffé, 250°C, pendant 7 à 8 minutes
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Madeleines prêt à être dégusté
 ---
 

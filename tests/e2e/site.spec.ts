@@ -327,18 +327,18 @@ test('base quantities remain readable without JavaScript', async ({
   await context.close();
 });
 
-test('missing hero uses the designed placeholder', async ({ page }) => {
+test('missing recipe image uses the designed placeholder', async ({ page }) => {
   await page.goto('/recettes/sauce-aubergine-feta/');
   await expect(
-    page.locator('.hero-media [data-hero-placeholder]'),
+    page.locator('.recipe-image [data-image-placeholder]'),
   ).toBeVisible();
 });
 
-test('recipe hero image is constrained to the viewport', async ({ page }) => {
+test('recipe image is constrained to the viewport', async ({ page }) => {
   await page.goto('/recettes/gnocchi/');
-  const hero = page.locator('.hero-media img');
-  await expect(hero).toBeVisible();
-  const box = await hero.boundingBox();
+  const recipeImage = page.locator('.recipe-image img');
+  await expect(recipeImage).toBeVisible();
+  const box = await recipeImage.boundingBox();
   const titleBox = await page.getByRole('heading', { level: 1 }).boundingBox();
   const viewport = page.viewportSize();
   if (!box || !titleBox || !viewport) {

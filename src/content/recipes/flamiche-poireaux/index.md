@@ -59,8 +59,8 @@ instructionSections:
 components:
   - id: pate-brisee
     factor: 1.2
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Flamiche aux poireaux prêt à être dégusté
 ---
 

@@ -48,8 +48,8 @@ instructionSections:
       - Répartissez la pâte dans les ramequins beurrés.
       - Mettez au four 10 à 12 min environ.
       - Démoulez délicatement à la sortie du four.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Moelleux coulant au chocolat prêt à être dégusté
 ---
 

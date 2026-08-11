@@ -73,8 +73,8 @@ instructionSections:
       - 'Mélanger le reste des ingrédients : sauce soja, miel, jus des citrons, gingembre, séame, fécule, piment. Remuer et ajouter dans la sauteuse.'
       - Remuer et laisser épaissir.
       - Ajouter le chou-fleur et mélanger pour bien enrober les morceaux de sauce.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Chou-fleur caramélisé soja sésame prêt à être dégusté
 ---
 

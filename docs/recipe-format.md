@@ -9,7 +9,7 @@ Each entry has its own directory:
 ```text
 src/content/recipes/<lowercase-kebab-case-id>/
 ├── index.md
-├── hero.jpg              # optional
+├── image.jpg             # optional main image
 └── other-local-image.*   # optional
 ```
 
@@ -245,16 +245,16 @@ Do not repeat an absolute scalable ingredient quantity in step text. Write “Aj
 
 ## Images and alt text
 
-A hero is optional:
+The main image is optional:
 
 ```yaml
-hero:
-  src: ./hero.jpg
+image:
+  src: ./image.jpg
   alt: Tarte dorée posée sur une assiette claire
   credit: https://example.test/source # optional
 ```
 
-Paths are relative to `index.md`. Astro validates and imports the local image. Alt text is mandatory whenever an image exists and should communicate useful visual content, not a filename or “image de…”. Missing heroes use the designed placeholder.
+Paths are relative to `index.md`. Astro validates and imports the local image. Alt text is mandatory whenever an image exists and should communicate useful visual content, not a filename or “image de…”. A missing main image uses the designed placeholder.
 
 Step images use the same shape and may add `caption`:
 

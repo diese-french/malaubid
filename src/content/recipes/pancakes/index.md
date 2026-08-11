@@ -53,8 +53,8 @@ instructionSections:
       - Ajouter le reste du lait et le beurre fondu, mélanger en raclant bien le fond.
       - Faire cuire à feu moyen-fort sur une poêle (200°C).
       - Des bulles se forment à la surface ; retourner avant qu'elles commencent à éclater (même si c'est encore un peu liquide).
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Pancakes prêt à être dégusté
 ---
 

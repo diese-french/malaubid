@@ -118,8 +118,8 @@ instructionSections:
       - Étaler la sauce à la viande sur les aubergines, puis la béchamel (on peut faire des couches)
       - text: Mettre au four à 200°C pendant 1h
         timerMinutes: 60
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Moussaka prêt à être dégusté
   credit: https://flic.kr/p/6cZdkg
 ---

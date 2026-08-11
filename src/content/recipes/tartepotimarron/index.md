@@ -58,8 +58,8 @@ instructionSections:
       - Préparer la pate en mélangeant la farine avec une pincée de sel, l'origan et l'huile d'olive. Ajouter juste assez d'eau pour former une pate. Abaisser et foncer un moule à tarte.
       - Garnire de tranches de potimarron et annper de crême au pesto.
       - Cuire pendant 45 min à 180°C. A manger chaud, tiède ou froid.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Tarte méridionale au potimarron, pesto et brebis frais prêt à être dégusté
 ---
 

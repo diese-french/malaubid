@@ -49,8 +49,8 @@ instructionSections:
       - Ajouter la viande et la sauce soja (2-3 cuillères à soupe)
       - Ajouter les pousses de haricots en mélangeant délicatement. Ne pas laissez cuire les pousses sinon elles deviennent toute molles
       - Servez avec du riz ou des pates, équipé de la sauce soja pour en rajouter au besoin
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Porc sauté sauce soja aux pousses de haricots mungo prêt à être dégusté
 ---
 

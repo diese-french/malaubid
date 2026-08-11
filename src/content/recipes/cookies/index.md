@@ -55,8 +55,8 @@ instructionSections:
       - Légèrement aplatir, mais pas trop, ça s’étale à la cuisson
       - 'Solution alternative : former un boudin de pâte, rouler dans du papier sulfurisé et placer au freezer le temps de préchauffer le four. On aura juste à couper des morceaux.'
       - Cuire 10 minutes à 180°C. Les bords des cookies doivent commencer à craqueler. Cuire selon le goût, penser qu’ils continuent à cuire une fois sortis du four.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Cookies prêt à être dégusté
 ---
 

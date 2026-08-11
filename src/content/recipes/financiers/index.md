@@ -44,8 +44,8 @@ instructionSections:
       - Bien beurrer les moules et les remplir au 3/4
       - Mettre au four à 200°C et laisser cuire 12-15 minutes, suivant la taille des moules
       - Surveiller la couleur en fin de cuisson, démouler et laisser refroidir sur une grille
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Financiers prêt à être dégusté
 ---
 

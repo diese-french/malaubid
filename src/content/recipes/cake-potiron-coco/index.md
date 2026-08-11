@@ -57,7 +57,7 @@ instructionSections:
       - Bien mélanger le tout
       - Verser la préparation dans un moule à cake
       - Faire cuire (dans un four préchauffé) pendant 35 mn à 200°C (pour un four à chaleur tournante)
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Cake Potiron - noix de coco prêt à être dégusté
 ---

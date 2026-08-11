@@ -28,8 +28,8 @@ components:
     factor: 1
   - id: sauce-au-yaourt
     factor: 1
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Falafels et leur sauce au yaourt prêt à être dégusté
 ---
 

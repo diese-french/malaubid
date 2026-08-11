@@ -132,11 +132,11 @@ async function loadRecipe(directoryName: string): Promise<RecipeSource> {
     `${directoryName}: yield label is required.`,
   );
 
-  if (data.hero)
+  if (data.image)
     await validateImage(
-      data.hero as unknown as { src: unknown; alt?: string },
+      data.image as unknown as { src: unknown; alt?: string },
       entryDirectory,
-      `${directoryName}.hero`,
+      `${directoryName}.image`,
     );
 
   for (const [groupIndex, group] of data.ingredientGroups.entries()) {

@@ -54,8 +54,8 @@ instructionSections:
       - Laisser pousser à nouveau 1h environ
       - Faire chauffer une poêle à feu moyen et une fois chaude, déposer la pâte sans l'écraser avec les mains. Laisser 3 minutes
       - Retourner le pain et le laisser 3 minutes à nouveau. Le retourner et ainsi de suite. La cuisson devrait durer environ 15 minutes.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Pain de semoule prêt à être dégusté
 ---
 

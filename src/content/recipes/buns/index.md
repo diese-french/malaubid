@@ -77,8 +77,8 @@ instructionSections:
       - Surveiller et sortir du four quand les buns ont une belle couleur dorée.
       - A la sortie du four, recouvrir d'un linge épais pendant au moins 15 minutes. Cela va contribuer au moelleux.
       - Ouvrir, toaster, garnir, ou congeler...
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Pains hamburger (buns) prêt à être dégusté
 ---
 

@@ -58,8 +58,8 @@ instructionSections:
       - Chemisez 6 moules à muffins. Répartissez-y la moitié de la pâte. Déposez les glaçons de coulis au centre des moules. Recouvrez avec le reste de la pâte.
       - Enfournez sans attendre pour un quart d’heure.
       - Dégustez encore chaud.
-hero:
-  src: './hero.png'
+image:
+  src: './image.png'
   alt: Moelleux choco-fruits prêt à être dégusté
   credit: https://keski.space
 ---

@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import { render } from 'astro:content';
 
-import HeroPlaceholder from '../../components/HeroPlaceholder.astro';
+import ImagePlaceholder from '../../components/ImagePlaceholder.astro';
 import IngredientList from '../../components/IngredientList.astro';
 import InstructionList from '../../components/InstructionList.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -51,12 +51,12 @@ const rootHasBody = Boolean(entry.body?.trim());
 const componentContents = flattenTree(tree).slice(1);
 const canonicalPath = `/recettes/${entry.id}/`;
 const canonicalUrl = new URL(canonicalPath, Astro.site).href;
-const heroUrl = entry.data.hero
-  ? new URL(entry.data.hero.src.src, Astro.site).href
+const imageUrl = entry.data.image
+  ? new URL(entry.data.image.src.src, Astro.site).href
   : undefined;
 const jsonLd = serializeRecipeJsonLd(recipe, recipeIndex, {
   canonicalUrl,
-  ...(heroUrl ? { imageUrl: heroUrl } : {}),
+  ...(imageUrl ? { imageUrl } : {}),
 });
 const jsonLdText = JSON.stringify(jsonLd).replaceAll('<', '\\u003c');
 const durations = [
@@ -71,7 +71,7 @@ const durations = [
   title={entry.data.title}
   description={entry.data.description ?? `Préparation ${entry.data.title}.`}
   canonicalPath={canonicalPath}
-  image={heroUrl}
+  image={imageUrl}
 >
   <script
     slot="head"
@@ -86,24 +86,24 @@ const durations = [
     data-base-yield={entry.data.yield.quantity}
   >
     <header class="recipe-header shell">
-      <figure class="hero-media">
+      <figure class="recipe-image">
         {
-          entry.data.hero ? (
+          entry.data.image ? (
             <Image
-              src={entry.data.hero.src}
-              alt={entry.data.hero.alt}
+              src={entry.data.image.src}
+              alt={entry.data.image.alt}
               loading="eager"
               fetchpriority="high"
             />
           ) : (
-            <HeroPlaceholder />
+            <ImagePlaceholder />
           )
         }
         {
-          entry.data.hero?.credit && (
+          entry.data.image?.credit && (
             <figcaption>
               Crédit photo :{' '}
-              <a href={entry.data.hero.credit} rel="external">
+              <a href={entry.data.image.credit} rel="external">
                 source
               </a>
             </figcaption>
@@ -307,21 +307,21 @@ const durations = [
     font-weight: 700;
   }
 
-  .hero-media {
+  .recipe-image {
     display: grid;
     margin: 0;
     place-items: center;
     background: var(--color-paper);
   }
 
-  .hero-media :global(img) {
+  .recipe-image :global(img) {
     width: auto;
     max-width: 100%;
     height: auto;
     max-height: min(30rem, 55vh);
   }
 
-  .hero-media figcaption {
+  .recipe-image figcaption {
     width: 100%;
     padding-top: 0.35rem;
     color: var(--color-muted);

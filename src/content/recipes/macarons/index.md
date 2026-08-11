@@ -82,7 +82,7 @@ instructionSections:
       - Verser la crème sur le chocolat.
       - Filmer au contact et mettre au froid pendant au moins 1h.
       - Assembler les coques avec un pochage de crème.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Macarons et crème prêt à être dégusté
 ---

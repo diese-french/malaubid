@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 
 import { getCategoryLabel } from '../lib/recipes/categories';
 import type { RecipeEntry } from '../lib/recipes/service';
-import HeroPlaceholder from './HeroPlaceholder.astro';
+import ImagePlaceholder from './ImagePlaceholder.astro';
 
 interface Props {
   recipe: RecipeEntry;
@@ -19,15 +19,15 @@ const category = getCategoryLabel(recipe.data.category);
   <a class="card-link" href={`/recettes/${recipe.id}/`}>
     <span class="visual" aria-hidden="true">
       {
-        recipe.data.hero ? (
+        recipe.data.image ? (
           <Image
-            src={recipe.data.hero.src}
+            src={recipe.data.image.src}
             alt=""
             width={640}
             loading={eager ? 'eager' : 'lazy'}
           />
         ) : (
-          <HeroPlaceholder compact />
+          <ImagePlaceholder compact />
         )
       }
     </span>
@@ -68,7 +68,7 @@ const category = getCategoryLabel(recipe.data.category);
   }
 
   .visual :global(img),
-  .visual :global([data-hero-placeholder]) {
+  .visual :global([data-image-placeholder]) {
     width: 100%;
     height: 100%;
     object-fit: cover;

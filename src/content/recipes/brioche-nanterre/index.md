@@ -73,8 +73,8 @@ instructionSections:
       - text: Enfourner pendant 45 minutes, surveiller sur la fin.
         timerMinutes: 45
       - Laisser refroidir sur une grille.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Brioche de Nanterre prêt à être dégusté
 ---
 

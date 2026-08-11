@@ -49,8 +49,8 @@ instructionSections:
       - Ajouter l'ail, le gingembre et les tomates, bien mélanger.
       - Couvrir et laisser cuire à feu doux pendant 15 min environ.
       - La sauce devra être très rouge et épaisse, ce qui indiquera la fin de la cuisson.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Rougail saucisse prêt à être dégusté
 ---
 

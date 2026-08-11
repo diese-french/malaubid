@@ -56,8 +56,8 @@ instructionSections:
 components:
   - id: pate-brisee
     factor: 1
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Tarte tatin prêt à être dégusté
 equipment:
   - name: moule à tatin compatible avec le feu

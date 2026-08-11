@@ -111,7 +111,7 @@ const recipes = defineCollection({
             'Tags must be unique.',
           )
           .optional(),
-        hero: recipeImage.optional(),
+        image: recipeImage.optional(),
         yield: z.object({
           quantity: positiveNumber,
           label: nonEmptyString,

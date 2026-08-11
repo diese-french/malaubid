@@ -51,8 +51,8 @@ instructionSections:
       - Secouer le panier ou retourner les morceaux pour que ça cuise uniformément, sortir quand c'est bien doré (3-5 minutes).
       - Déposer les beignets dans un plat sur du papier absorbant, reposer du paier dessus, et recommencer.
       - Ne pas mettre trop de beignets à la fois dans l'huile pour ne pas faire chuter la température.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Beignets d'aubergine prêt à être dégusté
 ---
 

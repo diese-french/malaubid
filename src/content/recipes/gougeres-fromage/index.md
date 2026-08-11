@@ -45,8 +45,8 @@ instructionSections:
       - Terminer en ajoutant le fromage.
       - Déposer de petites boules de pâte sur une plaque de cuisson avec du papier sulfurisé.
       - Enfourner 25 minutes à 180°C.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Gougères au fromage prêt à être dégusté
 ---
 

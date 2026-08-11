@@ -68,8 +68,8 @@ instructionSections:
         timerMinutes: 45
       - Dorer au pinceau et à l'œuf entier battu.
       - Enfourner à four froid, allumer à 180°C et laisser cuire 20 à 30 minutes jusqu'à obtenir une belle couleur dorée.
-hero:
-  src: './hero.png'
+image:
+  src: './image.png'
   alt: Brioche Tressée prêt à être dégusté
 ---
 

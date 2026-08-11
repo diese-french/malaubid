@@ -73,7 +73,7 @@ export interface RecipeData {
   visibility: 'listed' | 'unlisted' | 'draft';
   category: CategoryId;
   tags?: string[];
-  hero?: RecipeImage;
+  image?: RecipeImage;
   yield: {
     quantity: number;
     label: string;

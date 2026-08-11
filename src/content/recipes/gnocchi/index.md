@@ -47,8 +47,8 @@ instructionSections:
       - Faire bouillir un grand volume d'eau salée.
       - Déposer un tiers des gnocchi dans l'eau. Quand ils remontent, ils sont cuits. Répéter pour le reste.
       - On peut poêler les gnocchi dans un peu de beurre pour les rendre croustillants.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Gnocchi prêt à être dégusté
 ---
 

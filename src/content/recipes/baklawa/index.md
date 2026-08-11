@@ -76,8 +76,8 @@ instructionSections:
       - Dès la sortie du four, verser le miel chaud dans le plat. C'est lui qui va faire l'assemblage final.
       - Laisser refroidir, et laisser reposer minimum 24h à l'abri de l'air.
       - On pourra mettre les gateaux au frais quelques heures avant de servir.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Baklawa prêt à être dégusté
 ---
 

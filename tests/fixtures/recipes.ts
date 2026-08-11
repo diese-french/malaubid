@@ -143,8 +143,8 @@ export const compositeRecipe: RecipeSource = {
   }),
 };
 
-export const missingHeroRecipe: RecipeSource = {
-  id: 'missing-hero',
+export const missingImageRecipe: RecipeSource = {
+  id: 'missing-image',
   data: recipeData({ title: 'Sans image' }),
 };
 

@@ -49,8 +49,8 @@ instructionSections:
       - Ajouter à la préparation
       - Mettre au frais au moins 2h
       - Mélanger, et rectifier l'assaisonnement avant de servir
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Tzatziki prêt à être dégusté
   credit: https://flic.kr/p/a1wdZF
 ---

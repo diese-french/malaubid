@@ -46,8 +46,8 @@ instructionSections:
       - Fraiser la pâte pour l'homogénéiser, sans trop la travailler
       - Mettre au frais au minimum 30 minutes
       - Abaisser sur un plan fariné, étaler au rouleau
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Pâte brisée prêt à être dégusté
   credit: https://flic.kr/p/7LwBJo
 ---

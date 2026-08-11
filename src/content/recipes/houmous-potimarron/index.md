@@ -57,8 +57,8 @@ instructionSections:
       - Mixer ou écraser à la fourchette, corriger la consistance avec de l'eau de cuisson
       - Mettre au frais pendant au moins 2 heures
       - Mélanger, corriger l'assaisonnement
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Houmous de potimarron prêt à être dégusté
 ---
 

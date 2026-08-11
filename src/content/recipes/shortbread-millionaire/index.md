@@ -30,8 +30,8 @@ components:
     factor: 1
   - id: nappage-chocolat
     factor: 1
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Shortbread millionaire prêt à être dégusté
   credit: https://flic.kr/p/6o9gpw
 ---

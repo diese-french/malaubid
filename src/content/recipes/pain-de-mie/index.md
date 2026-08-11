@@ -63,8 +63,8 @@ instructionSections:
       - text: Démouler et replacer le pain sur la grille, finir la cuisson pendant 10 minutes.
         timerMinutes: 10
       - Laisser refroidir avant de couper.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Pain de mie prêt à être dégusté
 ---
 

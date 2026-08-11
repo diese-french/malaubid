@@ -40,8 +40,8 @@ instructionSections:
       - Mélanger à feu doux jusqu'à obtenir une texture lisse.
       - Mettre en pots.
       - Conserver au réfrigérateur, si il est trop dur en sortant on peut passer un peu au micro-ondes.
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Crème de caramel au beurre salé (salidou) prêt à être dégusté
 ---
 

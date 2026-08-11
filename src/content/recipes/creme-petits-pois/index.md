@@ -71,8 +71,8 @@ instructionSections:
       - Pour une présentation nickel, passer au chinois (pénible et pas indispensable)
       - Crémer et saler si besoin
       - Servir avec les lardons chauds, voir croustillants
-hero:
-  src: './hero.jpg'
+image:
+  src: './image.jpg'
   alt: Crème de petits pois au lard prêt à être dégusté
 ---
 
