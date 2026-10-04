@@ -5,6 +5,18 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
+    groups:
+      # One PR for all non-breaking bumps; majors stay separate for review.
+      npm-minor-patch:
+        patterns:
+          - '*'
+        update-types:
+          - minor
+          - patch
+      npm-security:
+        applies-to: security-updates
+        patterns:
+          - '*'
     ignore:
       # Keep compiler support aligned with @astrojs/check.
       - dependency-name: typescript
@@ -19,3 +31,7 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    groups:
+      github-actions:
+        patterns:
+          - '*'
