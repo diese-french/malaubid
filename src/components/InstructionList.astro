@@ -17,57 +17,55 @@ const { resolved, component = false } = Astro.props;
   data-instruction-source={resolved.recipe.id}
 >
   <h2>{component ? 'Étapes' : 'Préparation'}</h2>
-  {
-    resolved.recipe.data.instructionSections.map((section) => (
-      <div class="section">
-        {section.title && section.title !== 'Préparation' && (
-          <h3>{section.title}</h3>
-        )}
-        <ol>
-          {section.steps.map((step) => {
-            return (
-              <li>
-                <input
-                  type="checkbox"
-                  aria-label="Marquer cette étape comme terminée"
-                />
-                <div class="step-content">
-                  <p>{step.text}</p>
-                  {step.timerMinutes !== undefined && (
-                    <span class="timer" data-timer-minutes={step.timerMinutes}>
-                      Durée : {formatDuration(step.timerMinutes)}
-                    </span>
-                  )}
-                  {step.image && (
-                    <figure>
-                      <button
-                        type="button"
-                        class="full-image-button"
-                        data-full-size-image
-                        data-full-size-src={step.image.src.src}
-                        data-full-size-alt={step.image.alt}
-                        aria-label="Voir l’image de l’étape en grand"
-                      >
-                        <Image
-                          src={step.image.src}
-                          alt={step.image.alt}
-                          width={640}
-                          loading="lazy"
-                        />
-                      </button>
-                      {step.image.caption && (
-                        <figcaption>{step.image.caption}</figcaption>
-                      )}
-                    </figure>
-                  )}
-                </div>
-              </li>
-            );
-          })}
-        </ol>
-      </div>
-    ))
-  }
+  {resolved.recipe.data.instructionSections.map((section) => (
+    <div class="section">
+      {section.title && section.title !== 'Préparation' && (
+        <h3>{section.title}</h3>
+      )}
+      <ol>
+        {section.steps.map((step) => {
+          return (
+            <li>
+              <input
+                type="checkbox"
+                aria-label="Marquer cette étape comme terminée"
+              />
+              <div class="step-content">
+                <p>{step.text}</p>
+                {step.timerMinutes !== undefined && (
+                  <span class="timer" data-timer-minutes={step.timerMinutes}>
+                    Durée : {formatDuration(step.timerMinutes)}
+                  </span>
+                )}
+                {step.image && (
+                  <figure>
+                    <button
+                      type="button"
+                      class="full-image-button"
+                      data-full-size-image
+                      data-full-size-src={step.image.src.src}
+                      data-full-size-alt={step.image.alt}
+                      aria-label="Voir l’image de l’étape en grand"
+                    >
+                      <Image
+                        src={step.image.src}
+                        alt={step.image.alt}
+                        width={640}
+                        loading="lazy"
+                      />
+                    </button>
+                    {step.image.caption && (
+                      <figcaption>{step.image.caption}</figcaption>
+                    )}
+                  </figure>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  ))}
 </section>
 
 <style>
