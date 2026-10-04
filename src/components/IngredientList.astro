@@ -15,81 +15,79 @@ const { resolved, component = false } = Astro.props;
   data-ingredient-source={resolved.recipe.id}
 >
   <h2>{component ? 'Ingrédients' : 'Ingrédients'}</h2>
-  {
-    resolved.recipe.data.ingredientGroups.map((group) => (
-      <div class="group">
-        {group.title && <h3>{group.title}</h3>}
-        <ul>
-          {group.ingredients.map((ingredient) => {
-            const effectiveAmount = scaleAmount(
-              ingredient.amount,
-              resolved.factor,
-              ingredient.scalable,
-            );
-            const scalable =
-              ingredient.scalable && effectiveAmount.type !== 'qualitative';
-            return (
-              <li data-ingredient-name={ingredient.name}>
-                <input
-                  type="checkbox"
-                  aria-label={`Marquer ${ingredient.name} comme utilisé`}
-                />
-                <span class="ingredient-copy">
-                  <span class="amount-wrap">
-                    {ingredient.approximate && <span>environ </span>}
-                    <span
-                      class="amount"
-                      data-base-amount={
-                        scalable ? JSON.stringify(effectiveAmount) : undefined
-                      }
-                    >
-                      {formatAmount(effectiveAmount)}
+  {resolved.recipe.data.ingredientGroups.map((group) => (
+    <div class="group">
+      {group.title && <h3>{group.title}</h3>}
+      <ul>
+        {group.ingredients.map((ingredient) => {
+          const effectiveAmount = scaleAmount(
+            ingredient.amount,
+            resolved.factor,
+            ingredient.scalable,
+          );
+          const scalable =
+            ingredient.scalable && effectiveAmount.type !== 'qualitative';
+          return (
+            <li data-ingredient-name={ingredient.name}>
+              <input
+                type="checkbox"
+                aria-label={`Marquer ${ingredient.name} comme utilisé`}
+              />
+              <span class="ingredient-copy">
+                <span class="amount-wrap">
+                  {ingredient.approximate && <span>environ </span>}
+                  <span
+                    class="amount"
+                    data-base-amount={
+                      scalable ? JSON.stringify(effectiveAmount) : undefined
+                    }
+                  >
+                    {formatAmount(effectiveAmount)}
+                  </span>
+                </span>{' '}
+                <span class="name">{ingredient.name}</span>
+                {ingredient.note && (
+                  <span class="note"> — {ingredient.note}</span>
+                )}
+                {ingredient.optional && (
+                  <span class="optional"> (facultatif)</span>
+                )}
+                {ingredient.alternatives?.map((alternative) => {
+                  const alternativeAmount = scaleAmount(
+                    alternative.amount,
+                    resolved.factor,
+                    ingredient.scalable,
+                  );
+                  const alternativeScales =
+                    ingredient.scalable &&
+                    alternativeAmount.type !== 'qualitative';
+                  return (
+                    <span class="alternative">
+                      ou{' '}
+                      <span
+                        class="amount"
+                        data-base-amount={
+                          alternativeScales
+                            ? JSON.stringify(alternativeAmount)
+                            : undefined
+                        }
+                      >
+                        {formatAmount(alternativeAmount)}
+                      </span>{' '}
+                      {alternative.name}
+                      {alternative.note && (
+                        <span class="note"> — {alternative.note}</span>
+                      )}
                     </span>
-                  </span>{' '}
-                  <span class="name">{ingredient.name}</span>
-                  {ingredient.note && (
-                    <span class="note"> — {ingredient.note}</span>
-                  )}
-                  {ingredient.optional && (
-                    <span class="optional"> (facultatif)</span>
-                  )}
-                  {ingredient.alternatives?.map((alternative) => {
-                    const alternativeAmount = scaleAmount(
-                      alternative.amount,
-                      resolved.factor,
-                      ingredient.scalable,
-                    );
-                    const alternativeScales =
-                      ingredient.scalable &&
-                      alternativeAmount.type !== 'qualitative';
-                    return (
-                      <span class="alternative">
-                        ou{' '}
-                        <span
-                          class="amount"
-                          data-base-amount={
-                            alternativeScales
-                              ? JSON.stringify(alternativeAmount)
-                              : undefined
-                          }
-                        >
-                          {formatAmount(alternativeAmount)}
-                        </span>{' '}
-                        {alternative.name}
-                        {alternative.note && (
-                          <span class="note"> — {alternative.note}</span>
-                        )}
-                      </span>
-                    );
-                  })}
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    ))
-  }
+                  );
+                })}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  ))}
 </section>
 
 <style>

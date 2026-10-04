@@ -79,7 +79,6 @@ const durations = [
     set:html={jsonLdText}
     is:inline
   />
-
   <article
     class="recipe"
     data-recipe-scaler
@@ -87,79 +86,69 @@ const durations = [
   >
     <header class="recipe-header shell">
       <figure class="recipe-image">
-        {
-          entry.data.image ? (
-            <button
-              type="button"
-              class="full-image-button"
-              data-full-size-image
-              data-full-size-src={entry.data.image.src.src}
-              data-full-size-alt={entry.data.image.alt}
-              aria-label={`Voir l’image de ${entry.data.title} en grand`}
-            >
-              <Image
-                src={entry.data.image.src}
-                alt={entry.data.image.alt}
-                width={640}
-                loading="eager"
-                fetchpriority="high"
-              />
-            </button>
-          ) : (
-            <ImagePlaceholder />
-          )
-        }
-        {
-          entry.data.image?.credit && (
-            <figcaption>
-              Crédit photo :{' '}
-              <a href={entry.data.image.credit} rel="external">
-                source
-              </a>
-            </figcaption>
-          )
-        }
+        {entry.data.image ? (
+          <button
+            type="button"
+            class="full-image-button"
+            data-full-size-image
+            data-full-size-src={entry.data.image.src.src}
+            data-full-size-alt={entry.data.image.alt}
+            aria-label={`Voir l’image de ${entry.data.title} en grand`}
+          >
+            <Image
+              src={entry.data.image.src}
+              alt={entry.data.image.alt}
+              width={640}
+              loading="eager"
+              fetchpriority="high"
+            />
+          </button>
+        ) : (
+          <ImagePlaceholder />
+        )}
+        {entry.data.image?.credit && (
+          <figcaption>
+            Crédit photo :{' '}
+            <a href={entry.data.image.credit} rel="external">
+              source
+            </a>
+          </figcaption>
+        )}
       </figure>
       <div class="recipe-summary">
         <div class="title-block">
-          {
-            entry.data.visibility === 'draft' && (
-              <p class="draft-banner">
-                Brouillon · visible uniquement en développement
-              </p>
-            )
-          }
+          {entry.data.visibility === 'draft' && (
+            <p class="draft-banner">
+              Brouillon · visible uniquement en développement
+            </p>
+          )}
           <h1>{entry.data.title}</h1>
-          {
-            rootHasBody ? (
-              <div class="lede summary-notes">
-                <RootContent />
-              </div>
-            ) : (
-              entry.data.description && (
-                <p class="lede">{entry.data.description}</p>
-              )
+          {rootHasBody ? (
+            <div class="lede summary-notes">
+              <RootContent />
+            </div>
+          ) : (
+            entry.data.description && (
+              <p class="lede">{entry.data.description}</p>
             )
-          }
+          )}
           <p class="byline">
             {getCategoryLabel(entry.data.category)} · {entry.data.author}
           </p>
         </div>
         <dl class="metadata" aria-label="Durées">
-          {
-            durations.map(([label, minutes]) =>
-              minutes !== undefined ? (
-                <div>
-                  <dt>{label}</dt>
-                  <dd>
-                    <time datetime={durationToIso(minutes)}>
-                      {formatDuration(minutes)}
-                    </time>
-                  </dd>
-                </div>
-              ) : null,
-            )
-          }
+          {durations.map(([label, minutes]) =>
+            minutes !== undefined ? (
+              <div>
+                <dt>{label}</dt>
+                <dd>
+                  <time datetime={durationToIso(minutes)}>
+                    {formatDuration(minutes)}
+                  </time>
+                </dd>
+              </div>
+            ) : null,
+          )}
         </dl>
       </div>
     </header>
@@ -167,33 +156,31 @@ const durations = [
     <div class="recipe-content shell">
       <div class="recipe-grid">
         <aside>
-          {
-            tree.components.length > 0 && (
-              <section class="component-summary">
-                <h2>Préparations</h2>
-                <ul>
-                  {tree.components.map((component) => (
-                    <li data-component-reference={component.recipe.id}>
-                      <span
-                        class="component-factor"
-                        data-component-factor={component.recipe.id}
-                        data-base-amount={JSON.stringify({
-                          type: 'exact',
-                          value: component.factor,
-                        })}
-                      >
-                        {formatNumber(component.factor)}
-                      </span>{' '}
-                      ×{' '}
-                      <a href={`/recettes/${component.recipe.id}/`}>
-                        {component.recipe.data.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )
-          }
+          {tree.components.length > 0 && (
+            <section class="component-summary">
+              <h2>Préparations</h2>
+              <ul>
+                {tree.components.map((component) => (
+                  <li data-component-reference={component.recipe.id}>
+                    <span
+                      class="component-factor"
+                      data-component-factor={component.recipe.id}
+                      data-base-amount={JSON.stringify({
+                        type: 'exact',
+                        value: component.factor,
+                      })}
+                    >
+                      {formatNumber(component.factor)}
+                    </span>{' '}
+                    ×{' '}
+                    <a href={`/recettes/${component.recipe.id}/`}>
+                      {component.recipe.data.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
           <section class="scaler" aria-labelledby="yield-title">
             <h2 id="yield-title">Quantités</h2>
             <div class="yield-control">
@@ -214,76 +201,71 @@ const durations = [
                 <span>{entry.data.yield.label}</span>
               </div>
               <p class="base-yield">
-                Base&nbsp;: {
-                  formatYield(entry.data.yield.quantity, entry.data.yield.label)
-                }
+                Base&nbsp;:{' '}
+                {formatYield(entry.data.yield.quantity, entry.data.yield.label)}
               </p>
-              <button type="button" data-yield-reset>Réinitialiser</button>
+              <button type="button" data-yield-reset>
+                Réinitialiser
+              </button>
               <p class="status" data-yield-status aria-live="polite"></p>
             </div>
           </section>
-          {
-            entry.data.ingredientGroups.length > 0 && (
-              <IngredientList resolved={tree} />
-            )
-          }
-          {
-            entry.data.equipment && entry.data.equipment.length > 0 && (
-              <section class="equipment">
-                <h2>Matériel</h2>
-                <ul>
-                  {entry.data.equipment.map((item) => (
-                    <li>
-                      {item.quantity && <strong>{item.quantity} </strong>}
-                      {item.name}
-                      {item.note && <span> — {item.note}</span>}
-                      {item.optional && <span> (facultatif)</span>}
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )
-          }
+          {entry.data.ingredientGroups.length > 0 && (
+            <IngredientList resolved={tree} />
+          )}
+          {entry.data.equipment && entry.data.equipment.length > 0 && (
+            <section class="equipment">
+              <h2>Matériel</h2>
+              <ul>
+                {entry.data.equipment.map((item) => (
+                  <li>
+                    {item.quantity && <strong>{item.quantity} </strong>}
+                    {item.name}
+                    {item.note && <span> — {item.note}</span>}
+                    {item.optional && <span> (facultatif)</span>}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </aside>
         <div>
           <InstructionList resolved={tree} />
         </div>
       </div>
 
-      {
-        componentContents.length > 0 && (
-          <>
-            <div class="component-divider" aria-hidden="true">
-              ↓ Recette par étapes ↓
+      {componentContents.length > 0 && (
+        <>
+          <div class="component-divider" aria-hidden="true">
+            ↓ Recette par étapes ↓
+          </div>
+          <section class="components" aria-labelledby="components-title">
+            <h2 class="visually-hidden" id="components-title">
+              Recette par étapes
+            </h2>
+            <div class="component-stack">
+              {componentContents.map((resolved) => (
+                <article
+                  class="component"
+                  data-component-id={resolved.recipe.id}
+                >
+                  <header>
+                    <h3>
+                      <a href={`/recettes/${resolved.recipe.id}/`}>
+                        {resolved.recipe.data.title}
+                      </a>
+                    </h3>
+                  </header>
+                  <div class="component-grid">
+                    <IngredientList resolved={resolved} component />
+                    <InstructionList resolved={resolved} component />
+                  </div>
+                </article>
+              ))}
             </div>
-            <section class="components" aria-labelledby="components-title">
-              <h2 class="visually-hidden" id="components-title">
-                Recette par étapes
-              </h2>
-              <div class="component-stack">
-                {componentContents.map((resolved) => (
-                  <article
-                    class="component"
-                    data-component-id={resolved.recipe.id}
-                  >
-                    <header>
-                      <h3>
-                        <a href={`/recettes/${resolved.recipe.id}/`}>
-                          {resolved.recipe.data.title}
-                        </a>
-                      </h3>
-                    </header>
-                    <div class="component-grid">
-                      <IngredientList resolved={resolved} component />
-                      <InstructionList resolved={resolved} component />
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-          </>
-        )
-      }
+          </section>
+        </>
+      )}
     </div>
   </article>
   <dialog

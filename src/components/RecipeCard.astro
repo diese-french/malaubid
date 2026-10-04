@@ -18,18 +18,16 @@ const category = getCategoryLabel(recipe.data.category);
 <article class="card" data-recipe-card data-search-text={searchText}>
   <a class="card-link" href={`/recettes/${recipe.id}/`}>
     <span class="visual" aria-hidden="true">
-      {
-        recipe.data.image ? (
-          <Image
-            src={recipe.data.image.src}
-            alt=""
-            width={640}
-            loading={eager ? 'eager' : 'lazy'}
-          />
-        ) : (
-          <ImagePlaceholder compact />
-        )
-      }
+      {recipe.data.image ? (
+        <Image
+          src={recipe.data.image.src}
+          alt=""
+          width={640}
+          loading={eager ? 'eager' : 'lazy'}
+        />
+      ) : (
+        <ImagePlaceholder compact />
+      )}
     </span>
     <h2 data-recipe-title>{recipe.data.title}</h2>
     <span class="visually-hidden">
