@@ -22,20 +22,20 @@
     "recipe:new": "tsx scripts/new-recipe.ts"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.10",
+    "@astrojs/check": "0.9.12",
     "@eslint/js": "10.0.1",
     "@playwright/test": "1.64.1",
     "@types/node": "24.19.2",
-    "astro": "7.3.8",
-    "eslint": "10.12.0",
+    "astro": "7.4.2",
+    "eslint": "10.13.0",
     "eslint-plugin-astro": "3.2.1",
     "globals": "17.13.0",
     "prettier": "3.9.10",
     "prettier-plugin-astro": "1.1.1",
     "tsx": "4.23.15",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.71.2",
-    "vitest": "5.0.4",
+    "typescript-eslint": "8.72.0",
+    "vitest": "5.0.5",
     "yaml": "2.9.1"
   },
   "dependencies": {
